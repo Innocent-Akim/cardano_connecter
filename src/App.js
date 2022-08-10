@@ -48,15 +48,14 @@ import {
     ScriptDataHash, Ed25519KeyHash, NativeScript, StakeCredential
 } from "@emurgo/cardano-serialization-lib-asmjs"
 import "./App.css";
-import {blake2b} from "blakejs";
+import { blake2b } from "blakejs";
+import NavBar from './components/NavBar';
 let Buffer = require('buffer/').Buffer
 let blake = require('blakejs')
 
 
-export default class App extends React.Component
-{
-    constructor(props)
-    {
+export default class App extends React.Component {
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -148,7 +147,7 @@ export default class App extends React.Component
      */
     pollWallets = (count = 0) => {
         const wallets = [];
-        for(const key in window.cardano) {
+        for (const key in window.cardano) {
             if (window.cardano[key].enable && wallets.indexOf(key) === -1) {
                 wallets.push(key);
             }
@@ -171,7 +170,7 @@ export default class App extends React.Component
      * Handles the tab selection on the user form
      * @param tabId
      */
-    handleTabId = (tabId) => this.setState({selectedTabId: tabId})
+    handleTabId = (tabId) => this.setState({ selectedTabId: tabId })
 
     /**
      * Handles the radio buttons on the form that
@@ -180,7 +179,7 @@ export default class App extends React.Component
      */
     handleWalletSelect = (obj) => {
         const whichWalletSelected = obj.target.value
-        this.setState({whichWalletSelected},
+        this.setState({ whichWalletSelected },
             () => {
                 this.refreshData()
             })
@@ -198,7 +197,7 @@ export default class App extends React.Component
         const script = PlutusScript.from_bytes(Buffer.from(this.state.plutusScriptCborHex, "hex"))
         // const blake2bhash = blake.blake2b(script.to_bytes(), 0, 28);
         const blake2bhash = "67f33146617a5e61936081db3b2117cbf59bd2123748f58ac9678656";
-        const scripthash = ScriptHash.from_bytes(Buffer.from(blake2bhash,"hex"));
+        const scripthash = ScriptHash.from_bytes(Buffer.from(blake2bhash, "hex"));
 
         const cred = StakeCredential.from_scripthash(scripthash);
         const networkId = NetworkInfo.testnet().network_id();
@@ -228,7 +227,7 @@ export default class App extends React.Component
     checkIfWalletFound = () => {
         const walletKey = this.state.whichWalletSelected;
         const walletFound = !!window?.cardano?.[walletKey];
-        this.setState({walletFound})
+        this.setState({ walletFound })
         return walletFound;
     }
 
@@ -246,7 +245,7 @@ export default class App extends React.Component
         } catch (err) {
             console.log(err)
         }
-        this.setState({walletIsEnabled});
+        this.setState({ walletIsEnabled });
 
         return walletIsEnabled;
     }
@@ -263,7 +262,7 @@ export default class App extends React.Component
         const walletKey = this.state.whichWalletSelected;
         try {
             this.API = await window.cardano[walletKey].enable();
-        } catch(err) {
+        } catch (err) {
             console.log(err);
         }
         return this.checkIfWalletEnabled();
@@ -277,7 +276,7 @@ export default class App extends React.Component
     getAPIVersion = () => {
         const walletKey = this.state.whichWalletSelected;
         const walletAPIVersion = window?.cardano?.[walletKey].apiVersion;
-        this.setState({walletAPIVersion})
+        this.setState({ walletAPIVersion })
         return walletAPIVersion;
     }
 
@@ -290,7 +289,7 @@ export default class App extends React.Component
     getWalletName = () => {
         const walletKey = this.state.whichWalletSelected;
         const walletName = window?.cardano?.[walletKey].name;
-        this.setState({walletName})
+        this.setState({ walletName })
         return walletName;
     }
 
@@ -304,7 +303,7 @@ export default class App extends React.Component
     getNetworkId = async () => {
         try {
             const networkId = await this.API.getNetworkId();
-            this.setState({networkId})
+            this.setState({ networkId })
 
         } catch (err) {
             console.log(err)
@@ -340,7 +339,7 @@ export default class App extends React.Component
                     // console.log(`${N} Multiassets in the UTXO`)
 
 
-                    for (let i = 0; i < N; i++){
+                    for (let i = 0; i < N; i++) {
                         const policyId = keys.get(i);
                         const policyIdHex = Buffer.from(policyId.to_bytes(), "utf8").toString("hex");
                         // console.log(`policyId: ${policyIdHex}`)
@@ -351,8 +350,8 @@ export default class App extends React.Component
 
                         for (let j = 0; j < K; j++) {
                             const assetName = assetNames.get(j);
-                            const assetNameString = Buffer.from(assetName.name(),"utf8").toString();
-                            const assetNameHex = Buffer.from(assetName.name(),"utf8").toString("hex")
+                            const assetNameString = Buffer.from(assetName.name(), "utf8").toString();
+                            const assetNameHex = Buffer.from(assetName.name(), "utf8").toString("hex")
                             const multiassetAmt = multiasset.get_asset(policyId, assetName)
                             multiAssetStr += `+ ${multiassetAmt.to_str()} + ${policyIdHex}.${assetNameHex} (${assetNameString})`
                             // console.log(assetNameString)
@@ -373,7 +372,7 @@ export default class App extends React.Component
                 Utxos.push(obj);
                 // console.log(`utxo: ${str}`)
             }
-            this.setState({Utxos})
+            this.setState({ Utxos })
         } catch (err) {
             console.log(err)
         }
@@ -408,7 +407,7 @@ export default class App extends React.Component
                 CollatUtxos.push(utxo)
                 // console.log(utxo)
             }
-            this.setState({CollatUtxos})
+            this.setState({ CollatUtxos })
         } catch (err) {
             console.log(err)
         }
@@ -426,7 +425,7 @@ export default class App extends React.Component
             const balanceCBORHex = await this.API.getBalance();
 
             const balance = Value.from_bytes(Buffer.from(balanceCBORHex, "hex")).coin().to_str();
-            this.setState({balance})
+            this.setState({ balance })
 
         } catch (err) {
             console.log(err)
@@ -442,7 +441,7 @@ export default class App extends React.Component
         try {
             const raw = await this.API.getChangeAddress();
             const changeAddress = Address.from_bytes(Buffer.from(raw, "hex")).to_bech32()
-            this.setState({changeAddress})
+            this.setState({ changeAddress })
         } catch (err) {
             console.log(err)
         }
@@ -459,7 +458,7 @@ export default class App extends React.Component
             const rawFirst = raw[0];
             const rewardAddress = Address.from_bytes(Buffer.from(rawFirst, "hex")).to_bech32()
             // console.log(rewardAddress)
-            this.setState({rewardAddress})
+            this.setState({ rewardAddress })
 
         } catch (err) {
             console.log(err)
@@ -477,7 +476,7 @@ export default class App extends React.Component
             const rawFirst = raw[0];
             const usedAddress = Address.from_bytes(Buffer.from(rawFirst, "hex")).to_bech32()
             // console.log(rewardAddress)
-            this.setState({usedAddress})
+            this.setState({ usedAddress })
 
         } catch (err) {
             console.log(err)
@@ -491,7 +490,7 @@ export default class App extends React.Component
     refreshData = async () => {
         this.generateScriptAddress()
 
-        try{
+        try {
             const walletFound = this.checkIfWalletFound();
             if (walletFound) {
                 await this.getAPIVersion();
@@ -637,7 +636,7 @@ export default class App extends React.Component
 
         const submittedTxHash = await this.API.submitTx(Buffer.from(signedTx.to_bytes(), "utf8").toString("hex"));
         console.log(submittedTxHash)
-        this.setState({submittedTxHash});
+        this.setState({ submittedTxHash });
 
 
     }
@@ -704,7 +703,7 @@ export default class App extends React.Component
 
         const submittedTxHash = await this.API.submitTx(Buffer.from(signedTx.to_bytes(), "utf8").toString("hex"));
         console.log(submittedTxHash)
-        this.setState({submittedTxHash});
+        this.setState({ submittedTxHash });
 
         // const txBodyCborHex_unsigned = Buffer.from(txBody.to_bytes(), "utf8").toString("hex");
         // this.setState({txBodyCborHex_unsigned, txBody})
@@ -764,7 +763,7 @@ export default class App extends React.Component
 
         const submittedTxHash = await this.API.submitTx(Buffer.from(signedTx.to_bytes(), "utf8").toString("hex"));
         console.log(submittedTxHash)
-        this.setState({submittedTxHash: submittedTxHash, transactionIdLocked: submittedTxHash, lovelaceLocked: this.state.lovelaceToSend});
+        this.setState({ submittedTxHash: submittedTxHash, transactionIdLocked: submittedTxHash, lovelaceLocked: this.state.lovelaceToSend });
 
 
     }
@@ -798,7 +797,7 @@ export default class App extends React.Component
 
         // txOutputBuilder = txOutputBuilder.with_asset_and_min_required_coin(multiAsset, BigNum.from_str(this.protocolParams.coinsPerUtxoWord))
 
-        txOutputBuilder = txOutputBuilder.with_coin_and_asset(BigNum.from_str(this.state.lovelaceToSend.toString()),multiAsset)
+        txOutputBuilder = txOutputBuilder.with_coin_and_asset(BigNum.from_str(this.state.lovelaceToSend.toString()), multiAsset)
 
         const txOutput = txOutputBuilder.build();
 
@@ -839,7 +838,7 @@ export default class App extends React.Component
 
         const submittedTxHash = await this.API.submitTx(Buffer.from(signedTx.to_bytes(), "utf8").toString("hex"));
         console.log(submittedTxHash)
-        this.setState({submittedTxHash: submittedTxHash, transactionIdLocked: submittedTxHash, lovelaceLocked: this.state.lovelaceToSend})
+        this.setState({ submittedTxHash: submittedTxHash, transactionIdLocked: submittedTxHash, lovelaceLocked: this.state.lovelaceToSend })
 
     }
 
@@ -986,7 +985,7 @@ export default class App extends React.Component
 
         const submittedTxHash = await this.API.submitTx(Buffer.from(signedTx.to_bytes(), "utf8").toString("hex"));
         console.log(submittedTxHash)
-        this.setState({submittedTxHash});
+        this.setState({ submittedTxHash });
 
     }
 
@@ -1030,7 +1029,7 @@ export default class App extends React.Component
         let txOutputBuilder = TransactionOutputBuilder.new();
         txOutputBuilder = txOutputBuilder.with_address(shelleyChangeAddress);
         txOutputBuilder = txOutputBuilder.next();
-        txOutputBuilder = txOutputBuilder.with_coin_and_asset(BigNum.from_str(outputValStr),multiAsset)
+        txOutputBuilder = txOutputBuilder.with_coin_and_asset(BigNum.from_str(outputValStr), multiAsset)
 
         const txOutput = txOutputBuilder.build();
         txBuilder.add_output(txOutput)
@@ -1140,7 +1139,7 @@ export default class App extends React.Component
 
         const submittedTxHash = await this.API.submitTx(Buffer.from(signedTx.to_bytes(), "utf8").toString("hex"));
         console.log(submittedTxHash)
-        this.setState({submittedTxHash});
+        this.setState({ submittedTxHash });
 
     }
 
@@ -1150,29 +1149,28 @@ export default class App extends React.Component
         await this.refreshData();
     }
 
-    render()
-    {
+    render() {
 
         return (
-            <div style={{margin: "20px"}}>
+            <div style={{ margin: "20px" }}>
 
+                <NavBar />
 
-
-                <h1>Boilerplate DApp connector to Wallet</h1>
-                <div style={{paddingTop: "10px"}}>
-                    <div style={{marginBottom: 15}}>Select wallet:</div>
+                <h1 className='mt-16'>Boilerplate DApp connector to Wallet</h1>
+                <div style={{ paddingTop: "10px" }}>
+                    <div style={{ marginBottom: 15 }}>Select wallet:</div>
                     <RadioGroup
                         onChange={this.handleWalletSelect}
                         selectedValue={this.state.whichWalletSelected}
                         inline={true}
                         className="wallets-wrapper"
                     >
-                        { this.state.wallets.map(key =>
+                        {this.state.wallets.map(key =>
                             <Radio
                                 key={key}
                                 className="wallet-label"
                                 value={key}>
-                                <img src={window.cardano[key].icon} width={24} height={24} alt={key}/>
+                                <img src={window.cardano[key].icon} width={24} height={24} alt={key} />
                                 {window.cardano[key].name} ({key})
                             </Radio>
                         )}
@@ -1181,24 +1179,24 @@ export default class App extends React.Component
 
 
 
-                <button style={{padding: "20px"}} onClick={this.refreshData}>Refresh</button>
+                <button style={{ padding: "20px" }} onClick={this.refreshData}>Refresh</button>
 
-                <p style={{paddingTop: "20px"}}><span style={{fontWeight: "bold"}}>Wallet Found: </span>{`${this.state.walletFound}`}</p>
-                <p><span style={{fontWeight: "bold"}}>Wallet Connected: </span>{`${this.state.walletIsEnabled}`}</p>
-                <p><span style={{fontWeight: "bold"}}>Wallet API version: </span>{this.state.walletAPIVersion}</p>
-                <p><span style={{fontWeight: "bold"}}>Wallet name: </span>{this.state.walletName}</p>
+                <p style={{ paddingTop: "20px" }}><span style={{ fontWeight: "bold" }}>Wallet Found: </span>{`${this.state.walletFound}`}</p>
+                <p><span style={{ fontWeight: "bold" }}>Wallet Connected: </span>{`${this.state.walletIsEnabled}`}</p>
+                <p><span style={{ fontWeight: "bold" }}>Wallet API version: </span>{this.state.walletAPIVersion}</p>
+                <p><span style={{ fontWeight: "bold" }}>Wallet name: </span>{this.state.walletName}</p>
 
-                <p><span style={{fontWeight: "bold"}}>Network Id (0 = testnet; 1 = mainnet): </span>{this.state.networkId}</p>
-                <p style={{paddingTop: "20px"}}><span style={{fontWeight: "bold"}}>UTXOs: (UTXO #txid = ADA amount + AssetAmount + policyId.AssetName + ...): </span>{this.state.Utxos?.map(x => <li style={{fontSize: "10px"}} key={`${x.str}${x.multiAssetStr}`}>{`${x.str}${x.multiAssetStr}`}</li>)}</p>
-                <p style={{paddingTop: "20px"}}><span style={{fontWeight: "bold"}}>Balance: </span>{this.state.balance}</p>
-                <p><span style={{fontWeight: "bold"}}>Change Address: </span>{this.state.changeAddress}</p>
-                <p><span style={{fontWeight: "bold"}}>Staking Address: </span>{this.state.rewardAddress}</p>
-                <p><span style={{fontWeight: "bold"}}>Used Address: </span>{this.state.usedAddress}</p>
-                <hr style={{marginTop: "40px", marginBottom: "40px"}}/>
+                <p><span style={{ fontWeight: "bold" }}>Network Id (0 = testnet; 1 = mainnet): </span>{this.state.networkId}</p>
+                <p style={{ paddingTop: "20px" }}><span style={{ fontWeight: "bold" }}>UTXOs: (UTXO #txid = ADA amount + AssetAmount + policyId.AssetName + ...): </span>{this.state.Utxos?.map(x => <li style={{ fontSize: "10px" }} key={`${x.str}${x.multiAssetStr}`}>{`${x.str}${x.multiAssetStr}`}</li>)}</p>
+                <p style={{ paddingTop: "20px" }}><span style={{ fontWeight: "bold" }}>Balance: </span>{this.state.balance}</p>
+                <p><span style={{ fontWeight: "bold" }}>Change Address: </span>{this.state.changeAddress}</p>
+                <p><span style={{ fontWeight: "bold" }}>Staking Address: </span>{this.state.rewardAddress}</p>
+                <p><span style={{ fontWeight: "bold" }}>Used Address: </span>{this.state.usedAddress}</p>
+                <hr style={{ marginTop: "40px", marginBottom: "40px" }} />
 
                 <Tabs id="TabsExample" vertical={true} onChange={this.handleTabId} selectedTabId={this.state.selectedTabId}>
                     <Tab id="1" title="1. Send ADA to Address" panel={
-                        <div style={{marginLeft: "20px"}}>
+                        <div style={{ marginLeft: "20px" }}>
 
                             <FormGroup
                                 helperText="insert an address where you want to send some ADA ..."
@@ -1207,7 +1205,7 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({addressBech32SendADA: event.target.value})}
+                                    onChange={(event) => this.setState({ addressBech32SendADA: event.target.value })}
                                     value={this.state.addressBech32SendADA}
 
                                 />
@@ -1226,15 +1224,15 @@ export default class App extends React.Component
                                     min={1000000}
                                     stepSize={1000000}
                                     majorStepSize={1000000}
-                                    onValueChange={(event) => this.setState({lovelaceToSend: event})}
+                                    onValueChange={(event) => this.setState({ lovelaceToSend: event })}
                                 />
                             </FormGroup>
 
-                            <button style={{padding: "10px"}} onClick={this.buildSendADATransaction}>Run</button>
+                            <button style={{ padding: "10px" }} onClick={this.buildSendADATransaction}>Run</button>
                         </div>
                     } />
                     <Tab id="2" title="2. Send Token to Address" panel={
-                        <div style={{marginLeft: "20px"}}>
+                        <div style={{ marginLeft: "20px" }}>
 
                             <FormGroup
                                 helperText="insert an address where you want to send some ADA ..."
@@ -1243,7 +1241,7 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({addressBech32SendADA: event.target.value})}
+                                    onChange={(event) => this.setState({ addressBech32SendADA: event.target.value })}
                                     value={this.state.addressBech32SendADA}
 
                                 />
@@ -1262,7 +1260,7 @@ export default class App extends React.Component
                                     min={1}
                                     stepSize={1}
                                     majorStepSize={1}
-                                    onValueChange={(event) => this.setState({assetAmountToSend: event})}
+                                    onValueChange={(event) => this.setState({ assetAmountToSend: event })}
                                 />
                             </FormGroup>
                             <FormGroup
@@ -1272,7 +1270,7 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({assetPolicyIdHex: event.target.value})}
+                                    onChange={(event) => this.setState({ assetPolicyIdHex: event.target.value })}
                                     value={this.state.assetPolicyIdHex}
 
                                 />
@@ -1284,17 +1282,17 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({assetNameHex: event.target.value})}
+                                    onChange={(event) => this.setState({ assetNameHex: event.target.value })}
                                     value={this.state.assetNameHex}
 
                                 />
                             </FormGroup>
 
-                            <button style={{padding: "10px"}} onClick={this.buildSendTokenTransaction}>Run</button>
+                            <button style={{ padding: "10px" }} onClick={this.buildSendTokenTransaction}>Run</button>
                         </div>
                     } />
                     <Tab id="3" title="3. Send ADA to Plutus Script" panel={
-                        <div style={{marginLeft: "20px"}}>
+                        <div style={{ marginLeft: "20px" }}>
                             <FormGroup
                                 helperText="insert a Script address where you want to send some ADA ..."
                                 label="Script Address where to send ADA"
@@ -1302,7 +1300,7 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({addressScriptBech32: event.target.value})}
+                                    onChange={(event) => this.setState({ addressScriptBech32: event.target.value })}
                                     value={this.state.addressScriptBech32}
 
                                 />
@@ -1321,7 +1319,7 @@ export default class App extends React.Component
                                     min={1000000}
                                     stepSize={1000000}
                                     majorStepSize={1000000}
-                                    onValueChange={(event) => this.setState({lovelaceToSend: event})}
+                                    onValueChange={(event) => this.setState({ lovelaceToSend: event })}
                                 />
                             </FormGroup>
                             <FormGroup
@@ -1331,16 +1329,16 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({datumStr: event.target.value})}
+                                    onChange={(event) => this.setState({ datumStr: event.target.value })}
                                     value={this.state.datumStr}
 
                                 />
                             </FormGroup>
-                            <button style={{padding: "10px"}} onClick={this.buildSendAdaToPlutusScript}>Run</button>
+                            <button style={{ padding: "10px" }} onClick={this.buildSendAdaToPlutusScript}>Run</button>
                         </div>
                     } />
                     <Tab id="4" title="4. Send Token to Plutus Script" panel={
-                        <div style={{marginLeft: "20px"}}>
+                        <div style={{ marginLeft: "20px" }}>
                             <FormGroup
                                 helperText="Script address where ADA is locked ..."
                                 label="Script Address"
@@ -1348,7 +1346,7 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({addressScriptBech32: event.target.value})}
+                                    onChange={(event) => this.setState({ addressScriptBech32: event.target.value })}
                                     value={this.state.addressScriptBech32}
 
                                 />
@@ -1367,7 +1365,7 @@ export default class App extends React.Component
                                     min={1000000}
                                     stepSize={1000000}
                                     majorStepSize={1000000}
-                                    onValueChange={(event) => this.setState({lovelaceToSend: event})}
+                                    onValueChange={(event) => this.setState({ lovelaceToSend: event })}
                                 />
                             </FormGroup>
                             <FormGroup
@@ -1384,7 +1382,7 @@ export default class App extends React.Component
                                     min={1}
                                     stepSize={1}
                                     majorStepSize={1}
-                                    onValueChange={(event) => this.setState({assetAmountToSend: event})}
+                                    onValueChange={(event) => this.setState({ assetAmountToSend: event })}
                                 />
                             </FormGroup>
                             <FormGroup
@@ -1394,7 +1392,7 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({assetPolicyIdHex: event.target.value})}
+                                    onChange={(event) => this.setState({ assetPolicyIdHex: event.target.value })}
                                     value={this.state.assetPolicyIdHex}
 
                                 />
@@ -1406,7 +1404,7 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({assetNameHex: event.target.value})}
+                                    onChange={(event) => this.setState({ assetNameHex: event.target.value })}
                                     value={this.state.assetNameHex}
 
                                 />
@@ -1418,16 +1416,16 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({datumStr: event.target.value})}
+                                    onChange={(event) => this.setState({ datumStr: event.target.value })}
                                     value={this.state.datumStr}
 
                                 />
                             </FormGroup>
-                            <button style={{padding: "10px"}} onClick={this.buildSendTokenToPlutusScript}>Run</button>
+                            <button style={{ padding: "10px" }} onClick={this.buildSendTokenToPlutusScript}>Run</button>
                         </div>
                     } />
                     <Tab id="5" title="5. Redeem ADA from Plutus Script" panel={
-                        <div style={{marginLeft: "20px"}}>
+                        <div style={{ marginLeft: "20px" }}>
                             <FormGroup
                                 helperText="Script address where ADA is locked ..."
                                 label="Script Address"
@@ -1435,7 +1433,7 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({addressScriptBech32: event.target.value})}
+                                    onChange={(event) => this.setState({ addressScriptBech32: event.target.value })}
                                     value={this.state.addressScriptBech32}
 
                                 />
@@ -1447,7 +1445,7 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({plutusScriptCborHex: event.target.value})}
+                                    onChange={(event) => this.setState({ plutusScriptCborHex: event.target.value })}
                                     value={this.state.plutusScriptCborHex}
 
                                 />
@@ -1459,7 +1457,7 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({transactionIdLocked: event.target.value})}
+                                    onChange={(event) => this.setState({ transactionIdLocked: event.target.value })}
                                     value={this.state.transactionIdLocked}
 
                                 />
@@ -1478,7 +1476,7 @@ export default class App extends React.Component
                                     min={0}
                                     stepSize={1}
                                     majorStepSize={1}
-                                    onValueChange={(event) => this.setState({transactionIndxLocked: event})}
+                                    onValueChange={(event) => this.setState({ transactionIndxLocked: event })}
                                 />
                             </FormGroup>
                             <FormGroup
@@ -1495,7 +1493,7 @@ export default class App extends React.Component
                                     min={1000000}
                                     stepSize={1000000}
                                     majorStepSize={1000000}
-                                    onValueChange={(event) => this.setState({lovelaceLocked: event})}
+                                    onValueChange={(event) => this.setState({ lovelaceLocked: event })}
                                 />
                             </FormGroup>
                             <FormGroup
@@ -1505,7 +1503,7 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({datumStr: event.target.value})}
+                                    onChange={(event) => this.setState({ datumStr: event.target.value })}
                                     value={this.state.datumStr}
 
                                 />
@@ -1524,16 +1522,16 @@ export default class App extends React.Component
                                     min={160000}
                                     stepSize={100000}
                                     majorStepSize={100000}
-                                    onValueChange={(event) => this.setState({manualFee: event})}
+                                    onValueChange={(event) => this.setState({ manualFee: event })}
                                 />
                             </FormGroup>
-                            <button style={{padding: "10px"}} onClick={this.buildRedeemAdaFromPlutusScript}>Run</button>
+                            <button style={{ padding: "10px" }} onClick={this.buildRedeemAdaFromPlutusScript}>Run</button>
                             {/*<button style={{padding: "10px"}} onClick={this.signTransaction}>2. Sign Transaction</button>*/}
                             {/*<button style={{padding: "10px"}} onClick={this.submitTransaction}>3. Submit Transaction</button>*/}
                         </div>
                     } />
                     <Tab id="6" title="6. Redeem Tokens from Plutus Script" panel={
-                        <div style={{marginLeft: "20px"}}>
+                        <div style={{ marginLeft: "20px" }}>
                             <FormGroup
                                 helperText="Script address where ADA is locked ..."
                                 label="Script Address"
@@ -1541,7 +1539,7 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({addressScriptBech32: event.target.value})}
+                                    onChange={(event) => this.setState({ addressScriptBech32: event.target.value })}
                                     value={this.state.addressScriptBech32}
 
                                 />
@@ -1553,7 +1551,7 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({plutusScriptCborHex: event.target.value})}
+                                    onChange={(event) => this.setState({ plutusScriptCborHex: event.target.value })}
                                     value={this.state.plutusScriptCborHex}
 
                                 />
@@ -1565,7 +1563,7 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({transactionIdLocked: event.target.value})}
+                                    onChange={(event) => this.setState({ transactionIdLocked: event.target.value })}
                                     value={this.state.transactionIdLocked}
 
                                 />
@@ -1584,7 +1582,7 @@ export default class App extends React.Component
                                     min={0}
                                     stepSize={1}
                                     majorStepSize={1}
-                                    onValueChange={(event) => this.setState({transactionIndxLocked: event})}
+                                    onValueChange={(event) => this.setState({ transactionIndxLocked: event })}
                                 />
                             </FormGroup>
                             <FormGroup
@@ -1601,7 +1599,7 @@ export default class App extends React.Component
                                     min={1000000}
                                     stepSize={1000000}
                                     majorStepSize={1000000}
-                                    onValueChange={(event) => this.setState({lovelaceLocked: event})}
+                                    onValueChange={(event) => this.setState({ lovelaceLocked: event })}
                                 />
                             </FormGroup>
                             <FormGroup
@@ -1618,7 +1616,7 @@ export default class App extends React.Component
                                     min={1}
                                     stepSize={1}
                                     majorStepSize={1}
-                                    onValueChange={(event) => this.setState({assetAmountToSend: event})}
+                                    onValueChange={(event) => this.setState({ assetAmountToSend: event })}
                                 />
                             </FormGroup>
                             <FormGroup
@@ -1628,7 +1626,7 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({assetPolicyIdHex: event.target.value})}
+                                    onChange={(event) => this.setState({ assetPolicyIdHex: event.target.value })}
                                     value={this.state.assetPolicyIdHex}
 
                                 />
@@ -1640,7 +1638,7 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({assetNameHex: event.target.value})}
+                                    onChange={(event) => this.setState({ assetNameHex: event.target.value })}
                                     value={this.state.assetNameHex}
 
                                 />
@@ -1652,7 +1650,7 @@ export default class App extends React.Component
                                 <InputGroup
                                     disabled={false}
                                     leftIcon="id-number"
-                                    onChange={(event) => this.setState({datumStr: event.target.value})}
+                                    onChange={(event) => this.setState({ datumStr: event.target.value })}
                                     value={this.state.datumStr}
 
                                 />
@@ -1671,16 +1669,16 @@ export default class App extends React.Component
                                     min={160000}
                                     stepSize={100000}
                                     majorStepSize={100000}
-                                    onValueChange={(event) => this.setState({manualFee: event})}
+                                    onValueChange={(event) => this.setState({ manualFee: event })}
                                 />
                             </FormGroup>
-                            <button style={{padding: "10px"}} onClick={this.buildRedeemTokenFromPlutusScript}>Run</button>
+                            <button style={{ padding: "10px" }} onClick={this.buildRedeemTokenFromPlutusScript}>Run</button>
                         </div>
                     } />
                     <Tabs.Expander />
                 </Tabs>
 
-                <hr style={{marginTop: "40px", marginBottom: "40px"}}/>
+                <hr style={{ marginTop: "40px", marginBottom: "40px" }} />
 
                 {/*<p>{`Unsigned txBodyCborHex: ${this.state.txBodyCborHex_unsigned}`}</p>*/}
                 {/*<p>{`Signed txBodyCborHex: ${this.state.txBodyCborHex_signed}`}</p>*/}
