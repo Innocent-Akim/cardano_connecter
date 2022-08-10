@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from "react-router-dom";
 import { AiFillInstagram } from "react-icons/ai";
 import { BsFacebook, BsTwitter, BsLinkedin, } from "react-icons/bs";
 
@@ -13,10 +14,26 @@ const NavBar = () => {
             </div>
             <div>
                 <ul className='flex justify-between'>
-                    <li className='mx-6'><a className={classLink} href="/">Home</a></li>
-                    <li className='mx-6'><a className={classLink} href="/">Organisation</a></li>
-                    <li className='mx-6'><a className={classLink} href="/">Evénement</a></li>
-                    <li className='mx-6'><a className={classLink} href="/">Blog</a></li>
+                    <li className='mx-6'>
+                        <NavLink className={classLink} to='home'>
+                            Home
+                        </NavLink>
+                    </li>
+                    <li className='mx-6'>
+                        <NavLink className={classLink} to='organisation'>
+                            Organisation
+                        </NavLink>
+                    </li>
+                    <li className='mx-6'>
+                        <NavLink className={classLink} to='evenement'>
+                            Evénément
+                        </NavLink>
+                    </li>
+                    <li className='mx-6'>
+                        <NavLink className={classLink} to='blog'>
+                            Blog
+                        </NavLink>
+                    </li>
                 </ul>
             </div>
             <div>
