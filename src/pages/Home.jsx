@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
-import { Tab, Tabs, RadioGroup, Radio, FormGroup, InputGroup, NumericInput } from "@blueprintjs/core";
+import { Tab, Tabs, FormGroup, InputGroup, NumericInput } from "@blueprintjs/core";
 // import "../node_modules/@blueprintjs/core/lib/css/blueprint.css";
 // import "../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css";
 // import "../node_modules/normalize.css/normalize.css";
+
+import { useStateContext } from "../context/contextProvider";
+
 import {
     Address,
     BaseAddress,
@@ -49,6 +52,7 @@ import {
 } from "@emurgo/cardano-serialization-lib-asmjs"
 // import "./App.css";
 import { blake2b } from "blakejs";
+import WalletsList from '../components/WalletsList';
 let Buffer = require('buffer/').Buffer
 let blake = require('blakejs')
 
@@ -1149,27 +1153,33 @@ export default class Home extends Component {
     }
 
     render() {
+
+        // const { isClicked } = useStateContext()
+
         return (
-            <>
-                <div style={{ paddingTop: "10px" }}>
-                    <div style={{ marginBottom: 15 }}>Select wallet:</div>
-                    <RadioGroup
-                        onChange={this.handleWalletSelect}
-                        selectedValue={this.state.whichWalletSelected}
-                        inline={true}
-                        className="wallets-wrapper"
-                    >
+            <div className='mt-20 mx-12 flex flex-col items-start'>
+                {<div >
+                    <div className='mb-3'>Select wallet:</div>
+                    <WalletsList>
                         {this.state.wallets.map(key =>
-                            <Radio
+                            <button
                                 key={key}
-                                className="wallet-label"
-                                value={key}>
-                                <img src={window.cardano[key].icon} width={24} height={24} alt={key} />
-                                {window.cardano[key].name} ({key})
-                            </Radio>
+                                onClick={this.handleWalletSelect}
+                                selectedValue={this.state.whichWalletSelected}
+                                inline={true}
+                                className="flex justify-evenly content-center"
+                                value={key}
+                            >
+                                <img className='w-7' src={window.cardano[key].icon} alt={key} />
+                                {window.cardano[key].name}
+                            </button>
                         )}
-                    </RadioGroup>
-                </div>
+                    </WalletsList>
+
+                    {/* <div className='flex flex-col absolute right-1 top-16 bg-gray-100 p-5 rounded-lg w-96'>
+                        
+                    </div> */}
+                </div>}
 
 
 
@@ -1678,7 +1688,7 @@ export default class Home extends Component {
                 {/*<p>{`Signed txBodyCborHex: ${this.state.txBodyCborHex_signed}`}</p>*/}
                 <p>{`Submitted Tx Hash: ${this.state.submittedTxHash}`}</p>
                 <p>{this.state.submittedTxHash ? 'check your wallet !' : ''}</p>
-            </>
+            </div>
         )
     }
 }
