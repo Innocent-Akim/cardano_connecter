@@ -1159,7 +1159,7 @@ export default class Home extends Component {
         return (
             <div className='mt-20 mx-12 flex flex-col items-start'>
                 {<div >
-                    <div className='mb-3'>Select wallet:</div>
+                    {/* <div className='mb-3'>Select wallet:</div> */}
                     <WalletsList>
                         {this.state.wallets.map(key =>
                             <button
@@ -1167,23 +1167,19 @@ export default class Home extends Component {
                                 onClick={this.handleWalletSelect}
                                 selectedValue={this.state.whichWalletSelected}
                                 inline={true}
-                                className="flex justify-evenly content-center"
+                                className="flex justify-evenly items-center my-2 border-b-1 border-blue-300 text-blue-600 text-14 capitalize pb-2"
                                 value={key}
                             >
-                                <img className='w-7' src={window.cardano[key].icon} alt={key} />
+                                <img className='w-6' src={window.cardano[key].icon} alt={key} />
                                 {window.cardano[key].name}
                             </button>
                         )}
                     </WalletsList>
-
-                    {/* <div className='flex flex-col absolute right-1 top-16 bg-gray-100 p-5 rounded-lg w-96'>
-                        
-                    </div> */}
                 </div>}
 
 
 
-                <button style={{ padding: "20px" }} onClick={this.refreshData}>Refresh</button>
+                {/* <button style={{ padding: "20px" }} onClick={this.refreshData}>Refresh</button>
 
                 <p style={{ paddingTop: "20px" }}><span style={{ fontWeight: "bold" }}>Wallet Found: </span>{`${this.state.walletFound}`}</p>
                 <p><span style={{ fontWeight: "bold" }}>Wallet Connected: </span>{`${this.state.walletIsEnabled}`}</p>
@@ -1195,8 +1191,8 @@ export default class Home extends Component {
                 <p style={{ paddingTop: "20px" }}><span style={{ fontWeight: "bold" }}>Balance: </span>{this.state.balance}</p>
                 <p><span style={{ fontWeight: "bold" }}>Change Address: </span>{this.state.changeAddress}</p>
                 <p><span style={{ fontWeight: "bold" }}>Staking Address: </span>{this.state.rewardAddress}</p>
-                <p><span style={{ fontWeight: "bold" }}>Used Address: </span>{this.state.usedAddress}</p>
-                <hr style={{ marginTop: "40px", marginBottom: "40px" }} />
+                <p><span style={{ fontWeight: "bold" }}>Used Address: </span>{this.state.usedAddress}</p> */}
+                {/* <hr style={{ marginTop: "40px", marginBottom: "40px" }} /> */}
 
                 <Tabs id="TabsExample" vertical={true} onChange={this.handleTabId} selectedTabId={this.state.selectedTabId}>
                     <Tab id="1" title="1. Send ADA to Address" panel={

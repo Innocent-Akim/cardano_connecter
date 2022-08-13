@@ -49,10 +49,14 @@ const NavBar = () => {
                     <li className='mx-2'><a href="/"><BsTwitter className={classMediasSociaux} /></a></li>
                     <li className='mx-2'><a href="/"><BsFacebook className={classMediasSociaux} /></a></li>
                     <button
-                        className='text-pink-500 text-xl ml-8'
+                        className='text-blue-700 text-xl ml-8'
                         onClick={() => setIsClicked(!isClicked)}
                     >
-                        <RiWallet3Fill />
+                        <span className='flex'>
+                            <span className='animate-ping absolute inline-flex h-6 w-5 rounded-full bg-blue-400 opacity-75"'></span>
+                            <RiWallet3Fill className='relative h-6 w-5 inline-flex rounded-full' />
+                        </span>
+
                     </button>
                 </ul>
             </div>
