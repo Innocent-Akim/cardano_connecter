@@ -4,7 +4,7 @@ import Sidebar from '../components/blog/Sidebar'
 
 const Blog = () => {
     return (
-        <div className='absolute mt-16 flex'>
+        <div className='mt-16 flex'>
             <Sidebar />
             <Articles />
         </div>
