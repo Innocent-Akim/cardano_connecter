@@ -1158,7 +1158,7 @@ export default class Home extends Component {
         // const { isClicked } = useStateContext()
 
         return (
-            <div className='bg-gray-100 mt-20 mx-12 flex flex-col items-start'>
+            <div className='bg-gray-100 mt-20 mx-12 flex flex-col items-start shadow-2xl shadow-black p-10 rounded-lg'>
 
                 {<div >
                     {/* <div className='mb-3'>Select wallet:</div> */}
@@ -1181,13 +1181,13 @@ export default class Home extends Component {
 
 
 
-                <div className='flex flex-col justify-between w-full shadow-2xl shadow-black'>
+                <div className='flex flex-col justify-between'>
                     <Tabs
                         id="TabsExample"
                         vertical={true}
                         onChange={this.handleTabId}
                         selectedTabId={this.state.selectedTabId}
-                        className='p-10 rounded text-slate-900 font-semibold'
+                        className='text-slate-900 font-semibold'
                     >
                         <Tab id="1" title="1. Send ADA to Address" panel={
                             <div className='mx-5 mt-8'>
@@ -1673,7 +1673,7 @@ export default class Home extends Component {
                             </div>
                         } /> */}
                         <Tabs.Expander />
-                        <div className='flex flex-col p-10'>
+                        <div className='flex flex-col mt-8 rounded-lg'>
                             <button
                                 className='p-3 text-white hover:animate-pulse font-semibold mb-3 min-w-max rounded-md'
                                 onClick={this.refreshData}
@@ -1704,11 +1704,7 @@ export default class Home extends Component {
 
                         </div>
                     </Tabs>
-
-
                 </div>
-
-                <hr style={{ marginTop: "40px", marginBottom: "40px" }} />
 
                 {/*<p>{`Unsigned txBodyCborHex: ${this.state.txBodyCborHex_unsigned}`}</p>*/}
                 {/*<p>{`Signed txBodyCborHex: ${this.state.txBodyCborHex_signed}`}</p>*/}
