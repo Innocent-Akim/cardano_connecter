@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Tab, Tabs, FormGroup, InputGroup, NumericInput } from "@blueprintjs/core";
-// import "../node_modules/@blueprintjs/core/lib/css/blueprint.css";
+import '@blueprintjs/core/lib/css/blueprint.css';
 // import "../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css";
 // import "../node_modules/normalize.css/normalize.css";
 
@@ -1158,6 +1158,7 @@ export default class Home extends Component {
 
         return (
             <div className='mt-20 mx-12 flex flex-col items-start'>
+
                 {<div >
                     {/* <div className='mb-3'>Select wallet:</div> */}
                     <WalletsList>
@@ -1177,8 +1178,15 @@ export default class Home extends Component {
                     </WalletsList>
                 </div>}
 
+
+
                 <div className='flex justify-between w-full'>
-                    <Tabs id="TabsExample" vertical={true} onChange={this.handleTabId} selectedTabId={this.state.selectedTabId}>
+                    <Tabs
+                        id="TabsExample"
+                        vertical={true}
+                        onChange={this.handleTabId}
+                        selectedTabId={this.state.selectedTabId}
+                    >
                         <Tab id="1" title="1. Send ADA to Address" panel={
                             <div style={{ marginLeft: "20px" }}>
 
@@ -1675,7 +1683,7 @@ export default class Home extends Component {
                                 <p><span>Used Address: </span>{this.state.usedAddress}</p>
                                 <hr style={{ marginTop: "40px", marginBottom: "40px" }} />
                             </div>
-                            <div className='m-5 text-sky-900 font-semibold'>
+                            <div className='m-5 text-sky-900 text-sm font-semibold'>
                                 {/* <p style={{ paddingTop: "20px" }}><span style>Wallet Found: </span>{`${this.state.walletFound}`}</p>
                         <p><span style>Wallet Connected: </span>{`${this.state.walletIsEnabled}`}</p> */}
                                 <p><span>Wallet API version: </span>{this.state.walletAPIVersion}</p>
