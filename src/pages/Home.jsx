@@ -54,6 +54,7 @@ import {
 // import "./App.css";
 import { blake2b } from "blakejs";
 import WalletsList from '../components/WalletsList';
+import { CgCloseO } from 'react-icons/cg';
 let Buffer = require('buffer/').Buffer
 let blake = require('blakejs')
 
@@ -1189,6 +1190,12 @@ export default class Home extends Component {
                         selectedTabId={this.state.selectedTabId}
                         className='text-slate-900 font-semibold'
                     >
+                        <button
+                            className='fixed mb-5 -mt-6 right-10'
+                            onClick={this.props.handleClose}
+                        >
+                            <CgCloseO className='text-blue-900 text-xl' />
+                        </button>
                         <Tab id="1" title="1. Send ADA to Address" panel={
                             <div className='mx-5 mt-8'>
 
@@ -1704,6 +1711,7 @@ export default class Home extends Component {
 
                         </div>
                     </Tabs>
+
                 </div>
 
                 {/*<p>{`Unsigned txBodyCborHex: ${this.state.txBodyCborHex_unsigned}`}</p>*/}
