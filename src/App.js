@@ -7,21 +7,23 @@ import Home from './pages/Home';
 import Organisation from './pages/Organisation';
 import Evenement from './pages/Evenement';
 import Blog from './pages/Blog';
-export default class App extends React.Component {
-    render() {
-        return (
-            <BrowserRouter>
-                <NavBar />
 
-                <Routes>
-                    <Route path='/' element={<div />} />
-                    <Route path='/home' element={<div />} />
-                    <Route path='/organisation' element={<Organisation />} />
-                    <Route path='/evenement' element={<Evenement />} />
-                    <Route path='/blog' element={<Blog />} />
-                </Routes>
+const App = () => {
+    return (
+        <BrowserRouter>
+            <NavBar />
 
-            </BrowserRouter>
-        )
-    }
+            <Routes>
+                <Route path='/' element={<div />} />
+                <Route path='/home' element={<div />} />
+                <Route path='/organisation' element={<Organisation />} />
+                <Route path='/evenement' element={<Evenement />} />
+                <Route path='/blog' element={<Blog />} />
+            </Routes>
+
+        </BrowserRouter>
+    )
+
 }
+
+export default App
