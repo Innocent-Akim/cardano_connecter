@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { createPortal } from 'react-dom';
 import { Tab, Tabs, FormGroup, InputGroup, NumericInput } from "@blueprintjs/core";
 import '@blueprintjs/core/lib/css/blueprint.css';
 // import "../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css";
@@ -1157,7 +1158,7 @@ export default class Home extends Component {
         // const { isClicked } = useStateContext()
 
         return (
-            <div className='mt-20 mx-12 flex flex-col items-start'>
+            <div className='bg-gray-100 mt-20 mx-12 flex flex-col items-start'>
 
                 {<div >
                     {/* <div className='mb-3'>Select wallet:</div> */}
@@ -1180,19 +1181,21 @@ export default class Home extends Component {
 
 
 
-                <div className='flex justify-between w-full'>
+                <div className='flex flex-col justify-between w-full shadow-2xl shadow-black'>
                     <Tabs
                         id="TabsExample"
                         vertical={true}
                         onChange={this.handleTabId}
                         selectedTabId={this.state.selectedTabId}
+                        className='p-10 rounded text-slate-900 font-semibold'
                     >
                         <Tab id="1" title="1. Send ADA to Address" panel={
-                            <div style={{ marginLeft: "20px" }}>
+                            <div className='mx-5 mt-8'>
 
                                 <FormGroup
                                     helperText="insert an address where you want to send some ADA ..."
                                     label="Address where to send ADA"
+                                    className='w-64'
                                 >
                                     <InputGroup
                                         disabled={false}
@@ -1207,6 +1210,7 @@ export default class Home extends Component {
                                     label="Lovelaces (1 000 000 lovelaces = 1 ADA)"
                                     labelFor="order-amount-input2"
                                 >
+
                                     <NumericInput
                                         id="order-amount-input2"
                                         disabled={false}
@@ -1283,7 +1287,7 @@ export default class Home extends Component {
                                 <button style={{ padding: "10px" }} onClick={this.buildSendTokenTransaction}>Run</button>
                             </div>
                         } />
-                        <Tab id="3" title="3. Send ADA to Plutus Script" panel={
+                        {/* <Tab id="3" title="3. Send ADA to Plutus Script" panel={
                             <div style={{ marginLeft: "20px" }}>
                                 <FormGroup
                                     helperText="insert a Script address where you want to send some ADA ..."
@@ -1328,8 +1332,8 @@ export default class Home extends Component {
                                 </FormGroup>
                                 <button style={{ padding: "10px" }} onClick={this.buildSendAdaToPlutusScript}>Run</button>
                             </div>
-                        } />
-                        <Tab id="4" title="4. Send Token to Plutus Script" panel={
+                        } /> */}
+                        {/* <Tab id="4" title="4. Send Token to Plutus Script" panel={
                             <div style={{ marginLeft: "20px" }}>
                                 <FormGroup
                                     helperText="Script address where ADA is locked ..."
@@ -1415,8 +1419,8 @@ export default class Home extends Component {
                                 </FormGroup>
                                 <button style={{ padding: "10px" }} onClick={this.buildSendTokenToPlutusScript}>Run</button>
                             </div>
-                        } />
-                        <Tab id="5" title="5. Redeem ADA from Plutus Script" panel={
+                        } /> */}
+                        {/* <Tab id="5" title="5. Redeem ADA from Plutus Script" panel={
                             <div style={{ marginLeft: "20px" }}>
                                 <FormGroup
                                     helperText="Script address where ADA is locked ..."
@@ -1487,6 +1491,7 @@ export default class Home extends Component {
                                         majorStepSize={1000000}
                                         onValueChange={(event) => this.setState({ lovelaceLocked: event })}
                                     />
+
                                 </FormGroup>
                                 <FormGroup
                                     helperText="insert a Datum ..."
@@ -1518,11 +1523,11 @@ export default class Home extends Component {
                                     />
                                 </FormGroup>
                                 <button style={{ padding: "10px" }} onClick={this.buildRedeemAdaFromPlutusScript}>Run</button>
-                                {/*<button style={{padding: "10px"}} onClick={this.signTransaction}>2. Sign Transaction</button>*/}
-                                {/*<button style={{padding: "10px"}} onClick={this.submitTransaction}>3. Submit Transaction</button>*/}
+                                <button style={{padding: "10px"}} onClick={this.signTransaction}>2. Sign Transaction</button>
+                                <button style={{padding: "10px"}} onClick={this.submitTransaction}>3. Submit Transaction</button>
                             </div>
-                        } />
-                        <Tab id="6" title="6. Redeem Tokens from Plutus Script" panel={
+                        } /> */}
+                        {/* <Tab id="6" title="6. Redeem Tokens from Plutus Script" panel={
                             <div style={{ marginLeft: "20px" }}>
                                 <FormGroup
                                     helperText="Script address where ADA is locked ..."
@@ -1666,32 +1671,41 @@ export default class Home extends Component {
                                 </FormGroup>
                                 <button style={{ padding: "10px" }} onClick={this.buildRedeemTokenFromPlutusScript}>Run</button>
                             </div>
-                        } />
+                        } /> */}
                         <Tabs.Expander />
+                        <div className='flex flex-col p-10'>
+                            <button
+                                className='p-3 text-white hover:animate-pulse font-semibold mb-3 min-w-max rounded-md'
+                                onClick={this.refreshData}
+                                style={{
+                                    background: 'linear-gradient(90deg, rgba(4,0,60,1) 8%, rgba(9,9,121,1) 38%, rgba(0,212,255,1) 100%)',
+                                }}
+                            >
+                                Refresh
+                            </button>
+                            <div className='flex justify-between'>
+
+                                <div className='mx-5'>
+                                    {/* <p><span style={{ fontWeight: "bold" }}>Network Id (0 = testnet; 1 = mainnet): </span>{this.state.networkId}</p>
+                        <p style={{ paddingTop: "20px" }}><span style>UTXOs: (UTXO #txid = ADA amount + AssetAmount + policyId.AssetName + ...): </span>{this.state.Utxos?.map(x => <li style={{ fontSize: "10px" }} key={`${x.str}${x.multiAssetStr}`}>{`${x.str}${x.multiAssetStr}`}</li>)}</p> */}
+                                    <p><span>Balance: </span>{this.state.balance}</p>
+                                    <p><span>Change Address: </span>{this.state.changeAddress}</p>
+                                    <p><span>Staking Address: </span>{this.state.rewardAddress}</p>
+                                    <p><span>Used Address: </span>{this.state.usedAddress}</p>
+                                    <hr style={{ marginTop: "40px", marginBottom: "40px" }} />
+                                </div>
+                                <div className='m-5 text-sky-900 text-sm font-semibold'>
+                                    {/* <p style={{ paddingTop: "20px" }}><span style>Wallet Found: </span>{`${this.state.walletFound}`}</p>
+                        <p><span style>Wallet Connected: </span>{`${this.state.walletIsEnabled}`}</p> */}
+                                    <p><span>Wallet API version: </span>{this.state.walletAPIVersion}</p>
+                                    <p><span>Wallet name: </span>{this.state.walletName}</p>
+                                </div>
+                            </div>
+
+                        </div>
                     </Tabs>
 
-                    <div className='flex flex-col'>
-                        <button className='bg-sky-900 p-3 text-white hover:text-sky-900 hover:bg-white hover:border-1 hover:border-sky-900 font-semibold mb-3 min-w-max rounded-md' onClick={this.refreshData}>Refresh</button>
-                        <div className='flex justify-between'>
 
-                            <div className='mx-5'>
-                                {/* <p><span style={{ fontWeight: "bold" }}>Network Id (0 = testnet; 1 = mainnet): </span>{this.state.networkId}</p>
-                        <p style={{ paddingTop: "20px" }}><span style>UTXOs: (UTXO #txid = ADA amount + AssetAmount + policyId.AssetName + ...): </span>{this.state.Utxos?.map(x => <li style={{ fontSize: "10px" }} key={`${x.str}${x.multiAssetStr}`}>{`${x.str}${x.multiAssetStr}`}</li>)}</p> */}
-                                <p><span>Balance: </span>{this.state.balance}</p>
-                                <p><span>Change Address: </span>{this.state.changeAddress}</p>
-                                <p><span>Staking Address: </span>{this.state.rewardAddress}</p>
-                                <p><span>Used Address: </span>{this.state.usedAddress}</p>
-                                <hr style={{ marginTop: "40px", marginBottom: "40px" }} />
-                            </div>
-                            <div className='m-5 text-sky-900 text-sm font-semibold'>
-                                {/* <p style={{ paddingTop: "20px" }}><span style>Wallet Found: </span>{`${this.state.walletFound}`}</p>
-                        <p><span style>Wallet Connected: </span>{`${this.state.walletIsEnabled}`}</p> */}
-                                <p><span>Wallet API version: </span>{this.state.walletAPIVersion}</p>
-                                <p><span>Wallet name: </span>{this.state.walletName}</p>
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
 
                 <hr style={{ marginTop: "40px", marginBottom: "40px" }} />

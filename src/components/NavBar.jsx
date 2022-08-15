@@ -11,7 +11,7 @@ const NavBar = () => {
     const { isClicked, setIsClicked } = useStateContext()
 
     const classLink = 'text-black hover:decoration-white hover:text-blue-800 font-semibold'
-    const classMediasSociaux = 'text-sky-900 text-lg hover:text-blue-800 font-semibold'
+    const classMediasSociaux = 'text-blue-900 text-lg hover:text-blue-800 hover:animate-pulse font-semibold'
 
     return (
         <nav className='flex justify-between items-center fixed top-0 right-0 left-0 z-50 bg-gray-50 w-full h-14 mb-10 px-7 shadow-lg'>
@@ -49,12 +49,11 @@ const NavBar = () => {
                     <li className='mx-2'><a href="/"><BsTwitter className={classMediasSociaux} /></a></li>
                     <li className='mx-2'><a href="/"><BsFacebook className={classMediasSociaux} /></a></li>
                     <button
-                        className='text-blue-700 text-xl ml-8'
+                        className='text-blue-900 text-xl ml-8'
                         onClick={() => setIsClicked(!isClicked)}
                     >
                         <span className='flex'>
-                            <span className='animate-ping absolute inline-flex h-6 w-5 rounded-full bg-blue-400 opacity-75"'></span>
-                            <RiWallet3Fill className='relative h-6 w-5 inline-flex rounded-full' />
+                            <RiWallet3Fill className=' h-6 w-5  text-blue-900' />
                         </span>
 
                     </button>

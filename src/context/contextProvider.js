@@ -6,6 +6,7 @@ export const ContextProvider = ({ children }) => {
     const [isClicked, setIsClicked] = useState(false);
     const [isFilter, setIsFilter] = useState('');
     const [isCategory, setIsCategorie] = useState('All');
+    const [callPopup, setCallPopup] = useState(false);
 
     const handleChangeCategorie = (value) => {
         setIsCategorie(value)
@@ -28,7 +29,8 @@ export const ContextProvider = ({ children }) => {
                 isFilter,
                 handleChange,
                 isCategory,
-                handleChangeCategorie
+                handleChangeCategorie,
+                callPopup, setCallPopup
             }}
         >
             {children}

@@ -14,8 +14,8 @@ export default class App extends React.Component {
                 <NavBar />
 
                 <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/home' element={<Home />} />
+                    <Route path='/' element={<div />} />
+                    <Route path='/home' element={<div />} />
                     <Route path='/organisation' element={<Organisation />} />
                     <Route path='/evenement' element={<Evenement />} />
                     <Route path='/blog' element={<Blog />} />
