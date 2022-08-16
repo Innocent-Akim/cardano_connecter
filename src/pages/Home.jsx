@@ -3,6 +3,7 @@ import { Tab, Tabs, FormGroup, InputGroup, NumericInput } from "@blueprintjs/cor
 import { BsCashCoin } from 'react-icons/bs'
 import { FaRegIdCard } from "react-icons/fa";
 import '@blueprintjs/core/lib/css/blueprint.css';
+import cost_model_vals from '../data/version_cardano'
 // import "../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css";
 // import "../node_modules/normalize.css/normalize.css";
 
@@ -591,18 +592,15 @@ export default class Home extends Component {
      * @returns {Promise<void>}
      */
     buildSendADATransaction = async () => {
-
         const txBuilder = await this.initTransactionBuilder();
         const shelleyOutputAddress = Address.from_bech32(this.state.addressBech32SendADA);
         const shelleyChangeAddress = Address.from_bech32(this.state.changeAddress);
-
         txBuilder.add_output(
             TransactionOutput.new(
                 shelleyOutputAddress,
                 Value.new(BigNum.from_str(this.state.lovelaceToSend.toString()))
             ),
         );
-
         // Find the available UTXOs in the wallet and
         // us them as Inputs
         const txUnspentOutputs = await this.getTxUnspentOutputs();
@@ -636,12 +634,9 @@ export default class Home extends Component {
             transactionWitnessSet
         );
 
-
         const submittedTxHash = await this.API.submitTx(Buffer.from(signedTx.to_bytes(), "utf8").toString("hex"));
         console.log(submittedTxHash)
         this.setState({ submittedTxHash });
-
-
     }
 
 
@@ -937,20 +932,7 @@ export default class Home extends Component {
         Otherwise it will give errors when redeeming from Scripts
         Sending assets and ada to Script addresses is unaffected by this cost model
          */
-        const cost_model_vals = [
-            205665, 812, 1, 1, 1000, 571, 0, 1, 1000, 24177, 4, 1, 1000, 32, 117366,
-            10475, 4, 23000, 100, 23000, 100, 23000, 100, 23000, 100, 23000, 100, 23000,
-            100, 100, 100, 23000, 100, 19537, 32, 175354, 32, 46417, 4, 221973, 511, 0, 1,
-            89141, 32, 497525, 14068, 4, 2, 196500, 453240, 220, 0, 1, 1, 1000, 28662, 4,
-            2, 245000, 216773, 62, 1, 1060367, 12586, 1, 208512, 421, 1, 187000, 1000,
-            52998, 1, 80436, 32, 43249, 32, 1000, 32, 80556, 1, 57667, 4, 1000, 10,
-            197145, 156, 1, 197145, 156, 1, 204924, 473, 1, 208896, 511, 1, 52467, 32,
-            64832, 32, 65493, 32, 22558, 32, 16563, 32, 76511, 32, 196500, 453240, 220, 0,
-            1, 1, 69522, 11687, 0, 1, 60091, 32, 196500, 453240, 220, 0, 1, 1, 196500,
-            453240, 220, 0, 1, 1, 806990, 30482, 4, 1927926, 82523, 4, 265318, 0, 4, 0,
-            85931, 32, 205665, 812, 1, 1, 41182, 32, 212342, 32, 31220, 32, 32696, 32,
-            43357, 32, 32247, 32, 38314, 32, 9462713, 1021, 10,
-        ];
+
 
         const costModel = CostModel.new();
         cost_model_vals.forEach((x, i) => costModel.set(i, Int.new_i32(x)));
@@ -1091,20 +1073,20 @@ export default class Home extends Component {
         Otherwise it will give errors when redeeming from Scripts
         Sending assets and ada to Script addresses is unaffected by this cost model
          */
-        const cost_model_vals = [
-            205665, 812, 1, 1, 1000, 571, 0, 1, 1000, 24177, 4, 1, 1000, 32, 117366,
-            10475, 4, 23000, 100, 23000, 100, 23000, 100, 23000, 100, 23000, 100, 23000,
-            100, 100, 100, 23000, 100, 19537, 32, 175354, 32, 46417, 4, 221973, 511, 0, 1,
-            89141, 32, 497525, 14068, 4, 2, 196500, 453240, 220, 0, 1, 1, 1000, 28662, 4,
-            2, 245000, 216773, 62, 1, 1060367, 12586, 1, 208512, 421, 1, 187000, 1000,
-            52998, 1, 80436, 32, 43249, 32, 1000, 32, 80556, 1, 57667, 4, 1000, 10,
-            197145, 156, 1, 197145, 156, 1, 204924, 473, 1, 208896, 511, 1, 52467, 32,
-            64832, 32, 65493, 32, 22558, 32, 16563, 32, 76511, 32, 196500, 453240, 220, 0,
-            1, 1, 69522, 11687, 0, 1, 60091, 32, 196500, 453240, 220, 0, 1, 1, 196500,
-            453240, 220, 0, 1, 1, 806990, 30482, 4, 1927926, 82523, 4, 265318, 0, 4, 0,
-            85931, 32, 205665, 812, 1, 1, 41182, 32, 212342, 32, 31220, 32, 32696, 32,
-            43357, 32, 32247, 32, 38314, 32, 9462713, 1021, 10,
-        ];
+        // const cost_model_vals = [
+        //     205665, 812, 1, 1, 1000, 571, 0, 1, 1000, 24177, 4, 1, 1000, 32, 117366,
+        //     10475, 4, 23000, 100, 23000, 100, 23000, 100, 23000, 100, 23000, 100, 23000,
+        //     100, 100, 100, 23000, 100, 19537, 32, 175354, 32, 46417, 4, 221973, 511, 0, 1,
+        //     89141, 32, 497525, 14068, 4, 2, 196500, 453240, 220, 0, 1, 1, 1000, 28662, 4,
+        //     2, 245000, 216773, 62, 1, 1060367, 12586, 1, 208512, 421, 1, 187000, 1000,
+        //     52998, 1, 80436, 32, 43249, 32, 1000, 32, 80556, 1, 57667, 4, 1000, 10,
+        //     197145, 156, 1, 197145, 156, 1, 204924, 473, 1, 208896, 511, 1, 52467, 32,
+        //     64832, 32, 65493, 32, 22558, 32, 16563, 32, 76511, 32, 196500, 453240, 220, 0,
+        //     1, 1, 69522, 11687, 0, 1, 60091, 32, 196500, 453240, 220, 0, 1, 1, 196500,
+        //     453240, 220, 0, 1, 1, 806990, 30482, 4, 1927926, 82523, 4, 265318, 0, 4, 0,
+        //     85931, 32, 205665, 812, 1, 1, 41182, 32, 212342, 32, 31220, 32, 32696, 32,
+        //     43357, 32, 32247, 32, 38314, 32, 9462713, 1021, 10,
+        // ];
 
         const costModel = CostModel.new();
         cost_model_vals.forEach((x, i) => costModel.set(i, Int.new_i32(x)));
@@ -1187,6 +1169,7 @@ export default class Home extends Component {
                                     className='w-64'
                                 >
                                     <InputGroup
+                                        className='p-8'
                                         disabled={false}
                                         leftIcon="id-number"
                                         onChange={(event) => this.setState({ addressBech32SendADA: event.target.value })}
@@ -1292,393 +1275,9 @@ export default class Home extends Component {
                                 </button>
                             </div>
                         } />
-                        {/* <Tab id="3" title="3. Send ADA to Plutus Script" panel={
-                            <div style={{ marginLeft: "20px" }}>
-                                <FormGroup
-                                    helperText="insert a Script address where you want to send some ADA ..."
-                                    label="Script Address where to send ADA"
-                                >
-                                    <InputGroup
-                                        disabled={false}
-                                        leftIcon="id-number"
-                                        onChange={(event) => this.setState({ addressScriptBech32: event.target.value })}
-                                        value={this.state.addressScriptBech32}
 
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="Adjust Order Amount ..."
-                                    label="Lovelaces (1 000 000 lovelaces = 1 ADA)"
-                                    labelFor="order-amount-input2"
-                                >
-                                    <NumericInput
-                                        id="order-amount-input2"
-                                        disabled={false}
-                                        leftIcon={"variable"}
-                                        allowNumericCharactersOnly={true}
-                                        value={this.state.lovelaceToSend}
-                                        min={1000000}
-                                        stepSize={1000000}
-                                        majorStepSize={1000000}
-                                        onValueChange={(event) => this.setState({ lovelaceToSend: event })}
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="insert a Datum ..."
-                                    label="Datum that locks the ADA at the script address ..."
-                                >
-                                    <InputGroup
-                                        disabled={false}
-                                        leftIcon="id-number"
-                                        onChange={(event) => this.setState({ datumStr: event.target.value })}
-                                        value={this.state.datumStr}
-
-                                    />
-                                </FormGroup>
-                                <button style={{ padding: "10px" }} onClick={this.buildSendAdaToPlutusScript}>Run</button>
-                            </div>
-                        } /> */}
-                        {/* <Tab id="4" title="4. Send Token to Plutus Script" panel={
-                            <div style={{ marginLeft: "20px" }}>
-                                <FormGroup
-                                    helperText="Script address where ADA is locked ..."
-                                    label="Script Address"
-                                >
-                                    <InputGroup
-                                        disabled={false}
-                                        leftIcon="id-number"
-                                        onChange={(event) => this.setState({ addressScriptBech32: event.target.value })}
-                                        value={this.state.addressScriptBech32}
-
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="Need to send ADA with Tokens ..."
-                                    label="Lovelaces (1 000 000 lovelaces = 1 ADA)"
-                                    labelFor="order-amount-input2"
-                                >
-                                    <NumericInput
-                                        id="order-amount-input2"
-                                        disabled={false}
-                                        leftIcon={"variable"}
-                                        allowNumericCharactersOnly={true}
-                                        value={this.state.lovelaceToSend}
-                                        min={1000000}
-                                        stepSize={1000000}
-                                        majorStepSize={1000000}
-                                        onValueChange={(event) => this.setState({ lovelaceToSend: event })}
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="Make sure you have enough of Asset in your wallet ..."
-                                    label="Amount of Assets to Send"
-                                    labelFor="asset-amount-input"
-                                >
-                                    <NumericInput
-                                        id="asset-amount-input"
-                                        disabled={false}
-                                        leftIcon={"variable"}
-                                        allowNumericCharactersOnly={true}
-                                        value={this.state.assetAmountToSend}
-                                        min={1}
-                                        stepSize={1}
-                                        majorStepSize={1}
-                                        onValueChange={(event) => this.setState({ assetAmountToSend: event })}
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="Hex of the Policy Id"
-                                    label="Asset PolicyId"
-                                >
-                                    <InputGroup
-                                        disabled={false}
-                                        leftIcon="id-number"
-                                        onChange={(event) => this.setState({ assetPolicyIdHex: event.target.value })}
-                                        value={this.state.assetPolicyIdHex}
-
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="Hex of the Asset Name"
-                                    label="Asset Name"
-                                >
-                                    <InputGroup
-                                        disabled={false}
-                                        leftIcon="id-number"
-                                        onChange={(event) => this.setState({ assetNameHex: event.target.value })}
-                                        value={this.state.assetNameHex}
-
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="insert a Datum ..."
-                                    label="Datum that locks the ADA at the script address ..."
-                                >
-                                    <InputGroup
-                                        disabled={false}
-                                        leftIcon="id-number"
-                                        onChange={(event) => this.setState({ datumStr: event.target.value })}
-                                        value={this.state.datumStr}
-
-                                    />
-                                </FormGroup>
-                                <button style={{ padding: "10px" }} onClick={this.buildSendTokenToPlutusScript}>Run</button>
-                            </div>
-                        } /> */}
-                        {/* <Tab id="5" title="5. Redeem ADA from Plutus Script" panel={
-                            <div style={{ marginLeft: "20px" }}>
-                                <FormGroup
-                                    helperText="Script address where ADA is locked ..."
-                                    label="Script Address"
-                                >
-                                    <InputGroup
-                                        disabled={false}
-                                        leftIcon="id-number"
-                                        onChange={(event) => this.setState({ addressScriptBech32: event.target.value })}
-                                        value={this.state.addressScriptBech32}
-
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="content of the plutus script encoded as CborHex ..."
-                                    label="Plutus Script CborHex"
-                                >
-                                    <InputGroup
-                                        disabled={false}
-                                        leftIcon="id-number"
-                                        onChange={(event) => this.setState({ plutusScriptCborHex: event.target.value })}
-                                        value={this.state.plutusScriptCborHex}
-
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="Transaction hash ... If empty then run n. 3 first to lock some ADA"
-                                    label="UTXO where ADA is locked"
-                                >
-                                    <InputGroup
-                                        disabled={false}
-                                        leftIcon="id-number"
-                                        onChange={(event) => this.setState({ transactionIdLocked: event.target.value })}
-                                        value={this.state.transactionIdLocked}
-
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="UTXO IndexId#, usually it's 0 ..."
-                                    label="Transaction Index #"
-                                    labelFor="order-amount-input2"
-                                >
-                                    <NumericInput
-                                        id="order-amount-input2"
-                                        disabled={false}
-                                        leftIcon={"variable"}
-                                        allowNumericCharactersOnly={true}
-                                        value={this.state.transactionIndxLocked}
-                                        min={0}
-                                        stepSize={1}
-                                        majorStepSize={1}
-                                        onValueChange={(event) => this.setState({ transactionIndxLocked: event })}
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="Adjust Order Amount ..."
-                                    label="Lovelaces (1 000 000 lovelaces = 1 ADA)"
-                                    labelFor="order-amount-input2"
-                                >
-                                    <NumericInput
-                                        id="order-amount-input2"
-                                        disabled={false}
-                                        leftIcon={"variable"}
-                                        allowNumericCharactersOnly={true}
-                                        value={this.state.lovelaceLocked}
-                                        min={1000000}
-                                        stepSize={1000000}
-                                        majorStepSize={1000000}
-                                        onValueChange={(event) => this.setState({ lovelaceLocked: event })}
-                                    />
-
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="insert a Datum ..."
-                                    label="Datum that unlocks the ADA at the script address ..."
-                                >
-                                    <InputGroup
-                                        disabled={false}
-                                        leftIcon="id-number"
-                                        onChange={(event) => this.setState({ datumStr: event.target.value })}
-                                        value={this.state.datumStr}
-
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="Needs to be enough to execute the contract ..."
-                                    label="Manual Fee"
-                                    labelFor="order-amount-input2"
-                                >
-                                    <NumericInput
-                                        id="order-amount-input2"
-                                        disabled={false}
-                                        leftIcon={"variable"}
-                                        allowNumericCharactersOnly={true}
-                                        value={this.state.manualFee}
-                                        min={160000}
-                                        stepSize={100000}
-                                        majorStepSize={100000}
-                                        onValueChange={(event) => this.setState({ manualFee: event })}
-                                    />
-                                </FormGroup>
-                                <button style={{ padding: "10px" }} onClick={this.buildRedeemAdaFromPlutusScript}>Run</button>
-                                <button style={{padding: "10px"}} onClick={this.signTransaction}>2. Sign Transaction</button>
-                                <button style={{padding: "10px"}} onClick={this.submitTransaction}>3. Submit Transaction</button>
-                            </div>
-                        } /> */}
-                        {/* <Tab id="6" title="6. Redeem Tokens from Plutus Script" panel={
-                            <div style={{ marginLeft: "20px" }}>
-                                <FormGroup
-                                    helperText="Script address where ADA is locked ..."
-                                    label="Script Address"
-                                >
-                                    <InputGroup
-                                        disabled={false}
-                                        leftIcon="id-number"
-                                        onChange={(event) => this.setState({ addressScriptBech32: event.target.value })}
-                                        value={this.state.addressScriptBech32}
-
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="content of the plutus script encoded as CborHex ..."
-                                    label="Plutus Script CborHex"
-                                >
-                                    <InputGroup
-                                        disabled={false}
-                                        leftIcon="id-number"
-                                        onChange={(event) => this.setState({ plutusScriptCborHex: event.target.value })}
-                                        value={this.state.plutusScriptCborHex}
-
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="Transaction hash ... If empty then run n. 3 first to lock some ADA"
-                                    label="UTXO where ADA is locked"
-                                >
-                                    <InputGroup
-                                        disabled={false}
-                                        leftIcon="id-number"
-                                        onChange={(event) => this.setState({ transactionIdLocked: event.target.value })}
-                                        value={this.state.transactionIdLocked}
-
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="UTXO IndexId#, usually it's 0 ..."
-                                    label="Transaction Index #"
-                                    labelFor="order-amount-input2"
-                                >
-                                    <NumericInput
-                                        id="order-amount-input2"
-                                        disabled={false}
-                                        leftIcon={"variable"}
-                                        allowNumericCharactersOnly={true}
-                                        value={this.state.transactionIndxLocked}
-                                        min={0}
-                                        stepSize={1}
-                                        majorStepSize={1}
-                                        onValueChange={(event) => this.setState({ transactionIndxLocked: event })}
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="Adjust Order Amount ..."
-                                    label="Lovelaces (1 000 000 lovelaces = 1 ADA)"
-                                    labelFor="order-amount-input2"
-                                >
-                                    <NumericInput
-                                        id="order-amount-input2"
-                                        disabled={false}
-                                        leftIcon={"variable"}
-                                        allowNumericCharactersOnly={true}
-                                        value={this.state.lovelaceLocked}
-                                        min={1000000}
-                                        stepSize={1000000}
-                                        majorStepSize={1000000}
-                                        onValueChange={(event) => this.setState({ lovelaceLocked: event })}
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="Make sure you have enough of Asset in your wallet ..."
-                                    label="Amount of Assets to Reedem"
-                                    labelFor="asset-amount-input"
-                                >
-                                    <NumericInput
-                                        id="asset-amount-input"
-                                        disabled={false}
-                                        leftIcon={"variable"}
-                                        allowNumericCharactersOnly={true}
-                                        value={this.state.assetAmountToSend}
-                                        min={1}
-                                        stepSize={1}
-                                        majorStepSize={1}
-                                        onValueChange={(event) => this.setState({ assetAmountToSend: event })}
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="Hex of the Policy Id"
-                                    label="Asset PolicyId"
-                                >
-                                    <InputGroup
-                                        disabled={false}
-                                        leftIcon="id-number"
-                                        onChange={(event) => this.setState({ assetPolicyIdHex: event.target.value })}
-                                        value={this.state.assetPolicyIdHex}
-
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="Hex of the Asset Name"
-                                    label="Asset Name"
-                                >
-                                    <InputGroup
-                                        disabled={false}
-                                        leftIcon="id-number"
-                                        onChange={(event) => this.setState({ assetNameHex: event.target.value })}
-                                        value={this.state.assetNameHex}
-
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="insert a Datum ..."
-                                    label="Datum that unlocks the ADA at the script address ..."
-                                >
-                                    <InputGroup
-                                        disabled={false}
-                                        leftIcon="id-number"
-                                        onChange={(event) => this.setState({ datumStr: event.target.value })}
-                                        value={this.state.datumStr}
-
-                                    />
-                                </FormGroup>
-                                <FormGroup
-                                    helperText="Needs to be enough to execute the contract ..."
-                                    label="Manual Fee"
-                                    labelFor="order-amount-input2"
-                                >
-                                    <NumericInput
-                                        id="order-amount-input2"
-                                        disabled={false}
-                                        leftIcon={"variable"}
-                                        allowNumericCharactersOnly={true}
-                                        value={this.state.manualFee}
-                                        min={160000}
-                                        stepSize={100000}
-                                        majorStepSize={100000}
-                                        onValueChange={(event) => this.setState({ manualFee: event })}
-                                    />
-                                </FormGroup>
-                                <button style={{ padding: "10px" }} onClick={this.buildRedeemTokenFromPlutusScript}>Run</button>
-                            </div>
-                        } /> */}
                         {/* <Tabs.Expander /> */}
-                        <div className='hidden md:flex flex-col mt-8 rounded-lg'>
+                        <div className='hidden md:flex flex-col mt-7 rounded-lg'>
                             <button
                                 className='p-3 text-white hover:animate-pulse font-semibold mb-3 min-w-max rounded-md'
                                 onClick={this.refreshData}
@@ -1693,7 +1292,7 @@ export default class Home extends Component {
                                 <div className='mx-5'>
                                     {/* <p><span style={{ fontWeight: "bold" }}>Network Id (0 = testnet; 1 = mainnet): </span>{this.state.networkId}</p>
                         <p style={{ paddingTop: "20px" }}><span style>UTXOs: (UTXO #txid = ADA amount + AssetAmount + policyId.AssetName + ...): </span>{this.state.Utxos?.map(x => <li style={{ fontSize: "10px" }} key={`${x.str}${x.multiAssetStr}`}>{`${x.str}${x.multiAssetStr}`}</li>)}</p> */}
-                                    <p><span>Balance: </span>{this.state.balance}</p>
+                                    <p className='text-justify'><span>Balance: </span>{this.state.balance}</p>
                                     <p><span>Change Address: </span>{this.state.changeAddress}</p>
                                     <p><span>Staking Address: </span>{this.state.rewardAddress}</p>
                                     <p><span>Used Address: </span>{this.state.usedAddress}</p>
@@ -1721,7 +1320,7 @@ export default class Home extends Component {
                                         className="flex items-center text-blue-600 hover:text-sky-700 hover:border-b-2 border-sky-700 text-xs md:text-14 capitalize"
                                         value={key}
                                     >
-                                        <img className='w-3 sm:w-6' src={window.cardano[key].icon} alt={key} />
+                                        <img className='p-1 w-3 sm:w-6' src={window.cardano[key].icon} alt={key} />
                                         {window.cardano[key].name}
                                     </button>
                                 )}
