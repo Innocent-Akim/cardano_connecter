@@ -15,7 +15,7 @@ const Popup = () => {
             }}
         >
             <motion.div
-                className='pointer-events-none flex items-center justify-center bg-white rounded-3xl'
+                className='pointer-events-none flex  bg-white rounded-3xl'
                 onClick={(e) => e.stopPropagation()}
                 initial={{ opacity: 0, }}
                 animate={{ opacity: 1, }}

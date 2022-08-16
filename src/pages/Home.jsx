@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { createPortal } from 'react-dom';
 import { Tab, Tabs, FormGroup, InputGroup, NumericInput } from "@blueprintjs/core";
+import { BsCashCoin } from 'react-icons/bs'
+import { FaRegIdCard } from "react-icons/fa";
 import '@blueprintjs/core/lib/css/blueprint.css';
 // import "../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css";
 // import "../node_modules/normalize.css/normalize.css";
-
-import { useStateContext } from "../context/contextProvider";
 
 import {
     Address,
@@ -45,18 +44,17 @@ import {
     Int,
     NetworkInfo,
     EnterpriseAddress,
-    TransactionOutputs,
-    hash_transaction,
+    // TransactionOutputs,
+    // hash_transaction,
     hash_script_data,
     hash_plutus_data,
     ScriptDataHash, Ed25519KeyHash, NativeScript, StakeCredential
 } from "@emurgo/cardano-serialization-lib-asmjs"
 // import "./App.css";
-import { blake2b } from "blakejs";
+// import { blake2b } from "blakejs";
 import WalletsList from '../components/WalletsList';
-import { CgCloseO } from 'react-icons/cg';
 let Buffer = require('buffer/').Buffer
-let blake = require('blakejs')
+// let blake = require('blakejs')
 
 export default class Home extends Component {
 
@@ -199,7 +197,7 @@ export default class Home extends Component {
         // const cbor = Buffer.from(cborhex, "hex");
         // const blake2bhash = blake.blake2b(cbor, 0, 28);
 
-        const script = PlutusScript.from_bytes(Buffer.from(this.state.plutusScriptCborHex, "hex"))
+        // const script = PlutusScript.from_bytes(Buffer.from(this.state.plutusScriptCborHex, "hex"))
         // const blake2bhash = blake.blake2b(script.to_bytes(), 0, 28);
         const blake2bhash = "67f33146617a5e61936081db3b2117cbf59bd2123748f58ac9678656";
         const scripthash = ScriptHash.from_bytes(Buffer.from(blake2bhash, "hex"));
@@ -1156,10 +1154,23 @@ export default class Home extends Component {
 
     render() {
 
+        const title1 =
+            <p className='flex items-center'>
+                <BsCashCoin
+                    className='text-2xl mr-3 mt-2 text-green-800'
+                />  Send ADA to Address
+            </p>
+        const title2 =
+            <p className='flex items-center'>
+                <FaRegIdCard
+                    className='text-2xl mr-3 text-green-800'
+                />  Send Token to Address
+            </p>
+
         // const { isClicked } = useStateContext()
 
         return (
-            <div className='pointer-events-auto bg-white flex flex-col items-center max-w-max shadow-2xl shadow-black p-10 rounded-lg'>
+            <div className='pointer-events-auto bg-white flex flex-col max-w-max shadow-2xl shadow-black p-10 rounded-lg'>
 
                 <div className='flex'>
 
@@ -1170,7 +1181,7 @@ export default class Home extends Component {
                         selectedTabId={this.state.selectedTabId}
                         className='text-sky-600 font-semibold py-2 px-3'
                     >
-                        <Tab id="1" title="1. Send ADA to Address" panel={
+                        <Tab id="1" title={title1} panel={
                             <div className='mx-5 mt-8'>
 
                                 <FormGroup
@@ -1206,7 +1217,7 @@ export default class Home extends Component {
                                 </FormGroup>
 
                                 <button
-                                    className='text-white py-2 px-8 rounded-md'
+                                    className='text-white py-2 px-8 rounded-md animate-pulse'
                                     onClick={this.buildSendADATransaction}
                                     style={{
                                         background: 'linear-gradient(90deg, rgba(4,0,60,1) 8%, rgba(9,9,121,1) 38%, rgba(0,212,255,1) 100%)',
@@ -1216,7 +1227,7 @@ export default class Home extends Component {
                                 </button>
                             </div>
                         } />
-                        <Tab id="2" title="2. Send Token to Address" panel={
+                        <Tab id="2" title={title2} panel={
                             <div style={{ marginLeft: "20px" }}>
 
                                 <FormGroup
@@ -1274,7 +1285,7 @@ export default class Home extends Component {
                                 </FormGroup>
 
                                 <button
-                                    className='text-white py-2 px-8 rounded-md'
+                                    className='text-white py-2 px-8 rounded-md animate-pulse'
                                     onClick={this.buildSendTokenTransaction}
                                     style={{
                                         background: 'linear-gradient(90deg, rgba(4,0,60,1) 8%, rgba(9,9,121,1) 38%, rgba(0,212,255,1) 100%)',
