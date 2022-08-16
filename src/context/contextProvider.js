@@ -7,6 +7,7 @@ export const ContextProvider = ({ children }) => {
     const [isFilter, setIsFilter] = useState('');
     const [isCategory, setIsCategorie] = useState('All');
     const [callPopup, setCallPopup] = useState(false);
+    const [isSmallSize, setIsSmallSize] = useState(false);
 
     const handleChangeCategorie = (value) => {
         setIsCategorie(value)
@@ -30,7 +31,8 @@ export const ContextProvider = ({ children }) => {
                 handleChange,
                 isCategory,
                 handleChangeCategorie,
-                callPopup, setCallPopup
+                callPopup, setCallPopup,
+                isSmallSize, setIsSmallSize
             }}
         >
             {children}

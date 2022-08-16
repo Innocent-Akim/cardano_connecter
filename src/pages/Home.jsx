@@ -1153,33 +1153,30 @@ export default class Home extends Component {
     }
 
     render() {
-
         const title1 =
-            <p className='flex items-center'>
+            <p className='flex items-center text-green-800'>
                 <BsCashCoin
-                    className='text-2xl mr-3 mt-2 text-green-800'
+                    className='text-xs md:text-2xl mr-3 sm:mt-2 text-green-600'
                 />  Send ADA to Address
             </p>
         const title2 =
-            <p className='flex items-center'>
+            <p className='flex items-center text-green-800'>
                 <FaRegIdCard
-                    className='text-2xl mr-3 text-green-800'
+                    className='text-xs md:text-2xl mr-3 text-green-600'
                 />  Send Token to Address
             </p>
 
-        // const { isClicked } = useStateContext()
-
         return (
-            <div className='pointer-events-auto bg-white flex flex-col max-w-max shadow-2xl shadow-black p-10 rounded-lg'>
+            <div className='pointer-events-auto bg-white flex flex-col min-w-max w-full shadow-2xl shadow-black p2 md:p-10 rounded-lg'>
 
                 <div className='flex'>
 
                     <Tabs
                         id="TabsExample"
-                        vertical={true}
+                        vertical={this.props.isSmallScreen}
                         onChange={this.handleTabId}
                         selectedTabId={this.state.selectedTabId}
-                        className='text-sky-600 font-semibold py-2 px-3'
+                        className='text-sky-600 text-xs font-semibold py-2 px-3'
                     >
                         <Tab id="1" title={title1} panel={
                             <div className='mx-5 mt-8'>
@@ -1680,8 +1677,8 @@ export default class Home extends Component {
                                 <button style={{ padding: "10px" }} onClick={this.buildRedeemTokenFromPlutusScript}>Run</button>
                             </div>
                         } /> */}
-                        <Tabs.Expander />
-                        <div className='flex flex-col mt-8 rounded-lg'>
+                        {/* <Tabs.Expander /> */}
+                        <div className='hidden md:flex flex-col mt-8 rounded-lg'>
                             <button
                                 className='p-3 text-white hover:animate-pulse font-semibold mb-3 min-w-max rounded-md'
                                 onClick={this.refreshData}
@@ -1721,10 +1718,10 @@ export default class Home extends Component {
                                         onClick={this.handleWalletSelect}
                                         selectedValue={this.state.whichWalletSelected}
                                         inline={true}
-                                        className="flex items-center m-2 text-blue-600 hover:text-sky-700 hover:border-b-2 border-sky-700 text-14 capitalize"
+                                        className="flex items-center text-blue-600 hover:text-sky-700 hover:border-b-2 border-sky-700 text-xs md:text-14 capitalize"
                                         value={key}
                                     >
-                                        <img className='w-6' src={window.cardano[key].icon} alt={key} />
+                                        <img className='w-3 sm:w-6' src={window.cardano[key].icon} alt={key} />
                                         {window.cardano[key].name}
                                     </button>
                                 )}
@@ -1732,7 +1729,6 @@ export default class Home extends Component {
                         </div>}
 
                     </Tabs>
-
                 </div>
 
                 {/*<p>{`Unsigned txBodyCborHex: ${this.state.txBodyCborHex_unsigned}`}</p>*/}
