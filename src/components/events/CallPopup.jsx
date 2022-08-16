@@ -12,7 +12,6 @@ const CallPopup = () => {
                     setCallPopup(true)
                 }}
             >
-
                 Ouvrir
             </button>
         </div>

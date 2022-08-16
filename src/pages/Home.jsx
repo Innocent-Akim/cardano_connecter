@@ -1159,22 +1159,17 @@ export default class Home extends Component {
         // const { isClicked } = useStateContext()
 
         return (
-            <div className='bg-gray-100 flex flex-col items-start shadow-2xl shadow-black p-10 rounded-lg'>
+            <div className='pointer-events-auto bg-white flex flex-col items-center max-w-max shadow-2xl shadow-black p-10 rounded-lg'>
 
-                <div className='flex flex-col justify-between'>
+                <div className='flex'>
+
                     <Tabs
                         id="TabsExample"
                         vertical={true}
                         onChange={this.handleTabId}
                         selectedTabId={this.state.selectedTabId}
-                        className='text-slate-900 font-semibold'
+                        className='text-sky-600 font-semibold py-2 px-3'
                     >
-                        <button
-                            className='fixed mb-5 -mt-6 right-10'
-                            onClick={this.props.handleClose}
-                        >
-                            <CgCloseO className='text-blue-900 text-xl' />
-                        </button>
                         <Tab id="1" title="1. Send ADA to Address" panel={
                             <div className='mx-5 mt-8'>
 
@@ -1210,7 +1205,15 @@ export default class Home extends Component {
                                     />
                                 </FormGroup>
 
-                                <button style={{ padding: "10px" }} onClick={this.buildSendADATransaction}>Run</button>
+                                <button
+                                    className='text-white py-2 px-8 rounded-md'
+                                    onClick={this.buildSendADATransaction}
+                                    style={{
+                                        background: 'linear-gradient(90deg, rgba(4,0,60,1) 8%, rgba(9,9,121,1) 38%, rgba(0,212,255,1) 100%)',
+                                    }}
+                                >
+                                    Send
+                                </button>
                             </div>
                         } />
                         <Tab id="2" title="2. Send Token to Address" panel={
@@ -1270,7 +1273,15 @@ export default class Home extends Component {
                                     />
                                 </FormGroup>
 
-                                <button style={{ padding: "10px" }} onClick={this.buildSendTokenTransaction}>Run</button>
+                                <button
+                                    className='text-white py-2 px-8 rounded-md'
+                                    onClick={this.buildSendTokenTransaction}
+                                    style={{
+                                        background: 'linear-gradient(90deg, rgba(4,0,60,1) 8%, rgba(9,9,121,1) 38%, rgba(0,212,255,1) 100%)',
+                                    }}
+                                >
+                                    Send
+                                </button>
                             </div>
                         } />
                         {/* <Tab id="3" title="3. Send ADA to Plutus Script" panel={

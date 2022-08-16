@@ -3,30 +3,27 @@ import { createPortal } from 'react-dom';
 import { motion } from "framer-motion";
 
 import Home from '../pages/Home';
-
 import { useStateContext } from "../context/contextProvider";
 
 const Popup = () => {
-    const { callPopup, setCallPopup } = useStateContext()
+    const { setCallPopup } = useStateContext()
 
     return createPortal(
-        <div className='absolute top-5 right-0'
+        <div className='bg-half-transparent pointer-events-auto focus:pointer-events-none h-screen flex items-center justify-center'
+            onClick={(e) => {
+                setCallPopup(false);
+            }}
         >
-            {callPopup &&
-
-                <motion.div
-                    className='flex justify-between'
-                    initial={{ opacity: 0, y: '5%', x: '5%' }}
-                    animate={{ opacity: 1, y: '-0.1%', x: '-30%' }}
-                    exit={{ opacity: 0, y: '50%', x: '100%', scale: 0.2 }}
-                    transition={{ duration: 1 }}
-                >
-                    <Home
-                        handleClose={() => setCallPopup(false)}
-                    />
-                </motion.div>
-
-            }
+            <motion.div
+                className='pointer-events-none flex items-center justify-center bg-white rounded-3xl'
+                onClick={(e) => e.stopPropagation()}
+                initial={{ opacity: 0, }}
+                animate={{ opacity: 1, }}
+                exit={{ opacity: 0, y: '50%', x: '100%', scale: 0.2 }}
+                transition={{ duration: 1 }}
+            >
+                <Home />
+            </motion.div>
         </div>, document.body
     )
 }
