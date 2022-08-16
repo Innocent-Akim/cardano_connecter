@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from "react-router-dom";
-import { AiFillInstagram, AiOutlineMenuUnfold, AiOutlineMenuFold } from "react-icons/ai";
+import { AiFillInstagram, AiOutlineMenuUnfold } from "react-icons/ai";
 import { BsFacebook, BsTwitter, BsLinkedin, } from "react-icons/bs";
 import { MdOutlineMenuOpen } from "react-icons/md";
 
