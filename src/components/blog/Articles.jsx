@@ -30,12 +30,12 @@ const Articles = () => {
 
     return (
         <>
-            {data.length > 0 ? <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 w-screen mx-5 my-4 '>
+            {data.length > 0 ? <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 content-center mx-5 my-4 '>
                 {data.map((article, index) =>
-                    <div className='shadow-md w-full rounded-md border-1 border-blue-200' key={index}>
+                    <div className='shadow-md rounded-md border-1 border-blue-200' key={index}>
                         <div className='relative'>
                             <img src={article.image} alt="" className='w-full h-60 contrast-75 rounded-md' />
-                            <div className='absolute bottom-16 right-0 left-0 w-80 border-b-1'></div>
+                            <div className='absolute bottom-16 right-0 left-0 border-b-1'></div>
                             <div className='flex justify-between items-center absolute bottom-0 right-0 left-0 p-4 h-16 w-full text-gray-700 bg-gray-200'>
                                 <div className='text-gray-600'>
                                     <p>{article.auteur}</p>
@@ -54,7 +54,7 @@ const Articles = () => {
 
                 }
             </div> :
-                <div className='flex justify-center content-center items-center mt-44 w-screen'>
+                <div className='flex justify-center content-center items-center w-screen'>
                     <NoSurchData />
                 </div>}
         </>
