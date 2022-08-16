@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion, AnimatePresence } from "framer-motion";
 import { NavLink } from 'react-router-dom';
 import { AiFillHome } from "react-icons/ai";
 import { GiPipeOrgan } from "react-icons/gi";
@@ -14,48 +15,47 @@ const Sidebar = () => {
 
     return (
         <div className=''>
-            {isSidebarActive &&
-                <div className='fixed left-0 top-16 bg-gray-100 w-60 ml-4 p-3 block sm:hidden rounded-xl shadow-lg'>
-                    <ul className='flex flex-col justify-center w-60'>
-                        {/* <li className='p-3 w-80'> */}
-                        <NavLink className={classLink} to='home'
-                            onClick={() => {
-                                setIsSidebarActive(false)
-                            }}
-                        >
-                            <AiFillHome className={classIcon} /> Home
-                        </NavLink>
-                        {/* </li> */}
-                        {/* <li className=' p-3'> */}
-                        <NavLink className={classLink} to='organisation'
-                            onClick={() => {
-                                setIsSidebarActive(false)
-                            }}
-                        >
-                            <GiPipeOrgan className={classIcon} /> Organisation
-                        </NavLink>
-                        {/* </li> */}
-                        {/* <li className=' p-3'> */}
-                        <NavLink className={classLink} to='evenement'
-                            onClick={() => {
-                                setIsSidebarActive(false)
-                            }}
-                        >
-                            <MdOutlineEvent className={classIcon} /> Evénément
-                        </NavLink>
-                        {/* </li> */}
-                        {/* <li className=' p-3'> */}
-                        <NavLink className={classLink} to='blog'
-                            onClick={() => {
-                                setIsSidebarActive(false)
-                            }}
-                        >
-                            <FaBlog className={classIcon} /> Blog
-                        </NavLink>
-                        {/* </li> */}
-                    </ul>
-                </div>
-            }
+            <AnimatePresence>
+                {isSidebarActive &&
+                    <motion.div
+                        initial={{ opacity: 0, }}
+                        animate={{ opacity: 1, }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className='fixed left-0 top-16 bg-gray-100 w-60 ml-4 p-3 block sm:hidden rounded-xl shadow-lg'>
+                        <ul className='flex flex-col justify-center w-60'>
+                            <NavLink className={classLink} to='home'
+                                onClick={() => {
+                                    setIsSidebarActive(false)
+                                }}
+                            >
+                                <AiFillHome className={classIcon} /> Home
+                            </NavLink>
+                            <NavLink className={classLink} to='organisation'
+                                onClick={() => {
+                                    setIsSidebarActive(false)
+                                }}
+                            >
+                                <GiPipeOrgan className={classIcon} /> Organisation
+                            </NavLink>
+                            <NavLink className={classLink} to='evenement'
+                                onClick={() => {
+                                    setIsSidebarActive(false)
+                                }}
+                            >
+                                <MdOutlineEvent className={classIcon} /> Evénément
+                            </NavLink>
+                            <NavLink className={classLink} to='blog'
+                                onClick={() => {
+                                    setIsSidebarActive(false)
+                                }}
+                            >
+                                <FaBlog className={classIcon} /> Blog
+                            </NavLink>
+                        </ul>
+                    </motion.div>
+                }
+            </AnimatePresence>
         </div>
     )
 }
