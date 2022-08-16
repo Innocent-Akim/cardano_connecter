@@ -2,13 +2,8 @@ import React from 'react'
 import { NavLink } from "react-router-dom";
 import { AiFillInstagram } from "react-icons/ai";
 import { BsFacebook, BsTwitter, BsLinkedin, } from "react-icons/bs";
-import { RiWallet3Fill } from "react-icons/ri";
-
-import { useStateContext } from "../context/contextProvider";
 
 const NavBar = () => {
-
-    const { isClicked, setIsClicked } = useStateContext()
 
     const classLink = 'text-black hover:decoration-white hover:text-blue-800 font-semibold'
     const classMediasSociaux = 'text-blue-900 text-lg hover:text-blue-800 hover:animate-pulse font-semibold'
@@ -48,15 +43,6 @@ const NavBar = () => {
                     <li className='mx-2'><a href="/"><BsLinkedin className={classMediasSociaux} /></a></li>
                     <li className='mx-2'><a href="/"><BsTwitter className={classMediasSociaux} /></a></li>
                     <li className='mx-2'><a href="/"><BsFacebook className={classMediasSociaux} /></a></li>
-                    <button
-                        className='text-blue-900 text-xl ml-8'
-                        onClick={() => setIsClicked(!isClicked)}
-                    >
-                        <span className='flex'>
-                            <RiWallet3Fill className=' h-6 w-5  text-blue-900' />
-                        </span>
-
-                    </button>
                 </ul>
             </div>
         </nav>

@@ -1159,28 +1159,7 @@ export default class Home extends Component {
         // const { isClicked } = useStateContext()
 
         return (
-            <div className='bg-gray-100 mt-20 mx-12 flex flex-col items-start shadow-2xl shadow-black p-10 rounded-lg'>
-
-                {<div >
-                    {/* <div className='mb-3'>Select wallet:</div> */}
-                    <WalletsList>
-                        {this.state.wallets.map(key =>
-                            <button
-                                key={key}
-                                onClick={this.handleWalletSelect}
-                                selectedValue={this.state.whichWalletSelected}
-                                inline={true}
-                                className="flex justify-evenly items-center my-2 border-b-1 border-blue-300 text-blue-600 text-14 capitalize pb-2"
-                                value={key}
-                            >
-                                <img className='w-6' src={window.cardano[key].icon} alt={key} />
-                                {window.cardano[key].name}
-                            </button>
-                        )}
-                    </WalletsList>
-                </div>}
-
-
+            <div className='bg-gray-100 flex flex-col items-start shadow-2xl shadow-black p-10 rounded-lg'>
 
                 <div className='flex flex-col justify-between'>
                     <Tabs
@@ -1699,7 +1678,6 @@ export default class Home extends Component {
                                     <p><span>Change Address: </span>{this.state.changeAddress}</p>
                                     <p><span>Staking Address: </span>{this.state.rewardAddress}</p>
                                     <p><span>Used Address: </span>{this.state.usedAddress}</p>
-                                    <hr style={{ marginTop: "40px", marginBottom: "40px" }} />
                                 </div>
                                 <div className='m-5 text-sky-900 text-sm font-semibold'>
                                     {/* <p style={{ paddingTop: "20px" }}><span style>Wallet Found: </span>{`${this.state.walletFound}`}</p>
@@ -1710,6 +1688,27 @@ export default class Home extends Component {
                             </div>
 
                         </div>
+
+                        {<div>
+
+                            <WalletsList>
+                                <div>Select wallet :</div>
+                                {this.state.wallets.map(key =>
+                                    <button
+                                        key={key}
+                                        onClick={this.handleWalletSelect}
+                                        selectedValue={this.state.whichWalletSelected}
+                                        inline={true}
+                                        className="flex items-center m-2 text-blue-600 hover:text-sky-700 hover:border-b-2 border-sky-700 text-14 capitalize"
+                                        value={key}
+                                    >
+                                        <img className='w-6' src={window.cardano[key].icon} alt={key} />
+                                        {window.cardano[key].name}
+                                    </button>
+                                )}
+                            </WalletsList>
+                        </div>}
+
                     </Tabs>
 
                 </div>
