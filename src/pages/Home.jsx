@@ -1169,7 +1169,6 @@ export default class Home extends Component {
                                     className='w-64'
                                 >
                                     <InputGroup
-                                        className='p-8'
                                         disabled={false}
                                         leftIcon="id-number"
                                         onChange={(event) => this.setState({ addressBech32SendADA: event.target.value })}
@@ -1277,7 +1276,7 @@ export default class Home extends Component {
                         } />
 
                         {/* <Tabs.Expander /> */}
-                        <div className='hidden md:flex flex-col mt-7 rounded-lg'>
+                        <div className='hidden md:flex flex-col mt-8 rounded-lg'>
                             <button
                                 className='p-3 text-white hover:animate-pulse font-semibold mb-3 min-w-max rounded-md'
                                 onClick={this.refreshData}
@@ -1292,8 +1291,8 @@ export default class Home extends Component {
                                 <div className='mx-5'>
                                     {/* <p><span style={{ fontWeight: "bold" }}>Network Id (0 = testnet; 1 = mainnet): </span>{this.state.networkId}</p>
                         <p style={{ paddingTop: "20px" }}><span style>UTXOs: (UTXO #txid = ADA amount + AssetAmount + policyId.AssetName + ...): </span>{this.state.Utxos?.map(x => <li style={{ fontSize: "10px" }} key={`${x.str}${x.multiAssetStr}`}>{`${x.str}${x.multiAssetStr}`}</li>)}</p> */}
-                                    <p className='text-justify'><span>Balance: </span>{this.state.balance}</p>
-                                    <p><span>Change Address: </span>{this.state.changeAddress}</p>
+                                    <p><span>Balance: </span>{this.state.balance}</p>
+                                    <p>Change Address: <span><input type='text' value={this.state.changeAddress} className='border-none' /></span></p>
                                     <p><span>Staking Address: </span>{this.state.rewardAddress}</p>
                                     <p><span>Used Address: </span>{this.state.usedAddress}</p>
                                 </div>
@@ -1320,7 +1319,7 @@ export default class Home extends Component {
                                         className="flex items-center text-blue-600 hover:text-sky-700 hover:border-b-2 border-sky-700 text-xs md:text-14 capitalize"
                                         value={key}
                                     >
-                                        <img className='p-1 w-3 sm:w-6' src={window.cardano[key].icon} alt={key} />
+                                        <img className='w-3 sm:w-6' src={window.cardano[key].icon} alt={key} />
                                         {window.cardano[key].name}
                                     </button>
                                 )}
