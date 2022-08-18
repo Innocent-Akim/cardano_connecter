@@ -30,9 +30,9 @@ const Articles = () => {
 
     return (
         <>
-            {data.length > 0 ? <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 content-center mx-5 my-4 '>
+            {data.length > 0 ? <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 content-center mx-5 my-4 '>
                 {data.map((article, index) =>
-                    <div className='shadow-md rounded-md border-b-4 border-blue-400' key={index}>
+                    <div className='shadow-md rounded-md border-b-1 border-blue-400' key={index}>
                         <div className='relative'>
                             <img src={article.image} alt="" className='w-full h-60 contrast-75 rounded-md' />
                             <div className='absolute bottom-16 right-0 left-0 border-b-1'></div>
