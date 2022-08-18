@@ -1292,11 +1292,12 @@ export default class Home extends Component {
                                     {/* <p><span style={{ fontWeight: "bold" }}>Network Id (0 = testnet; 1 = mainnet): </span>{this.state.networkId}</p>
                         <p style={{ paddingTop: "20px" }}><span style>UTXOs: (UTXO #txid = ADA amount + AssetAmount + policyId.AssetName + ...): </span>{this.state.Utxos?.map(x => <li style={{ fontSize: "10px" }} key={`${x.str}${x.multiAssetStr}`}>{`${x.str}${x.multiAssetStr}`}</li>)}</p> */}
                                     <p><span>Balance:   </span>{this.state.balance}</p>
-                                    <p>Change Address:    <span><input type='text' value={this.state.changeAddress} className='border-none' ></input></span></p>
-                                    <p>Staking Address:    <span><input type='text' value={this.state.rewardAddress} className='border-none' /></span></p>
-                                    <p>Used Address:    <span><input type='text' value={this.state.usedAddress} className='border-none' /></span></p>
+                                    <p>Change Address:    <span><input readOnly type='text' value={this.state.changeAddress} className='border-none' ></input></span></p>
+                                    <p>Staking Address:    <span><input readOnly type='text' value={this.state.rewardAddress} className='border-none' /></span></p>
+                                    <p>Used Address:    <span><input readOnly type='text' value={this.state.usedAddress} className='border-none' /></span></p>
                                 </div>
                                 <div className='m-5 text-sky-900 text-sm font-semibold'>
+
                                     {/* <p style={{ paddingTop: "20px" }}><span style>Wallet Found: </span>{`${this.state.walletFound}`}</p>
                         <p><span style>Wallet Connected: </span>{`${this.state.walletIsEnabled}`}</p> */}
                                     <p><span>Wallet API version: </span>{this.state.walletAPIVersion}</p>
