@@ -8,7 +8,7 @@ const EventCard = ({ date, objectif, modalites, lieu, image }) => {
             <div className='relative'>
                 <img src={image} alt="" className='w-full h-60 contrast-75 rounded-md' />
                 <div className='text-gray-600'>
-                    <h1 className='my-3 mx-2'>{objectif}</h1>
+                    <h1 className='my-3 mx-2 text-green-600 font-bold'>{objectif}</h1>
                     <p className='mx-2'>{date}</p>
                 </div>
             </div>

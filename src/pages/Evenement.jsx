@@ -13,15 +13,14 @@ const Evenement = () => {
     })
 
     const uniqueStateEvents = [...new Set(stateEvents)]
-    console.log(uniqueStateEvents)
 
     return (
-        <div className='mt-16 mx-8 flex flex-col justify-center items-center'>
+        <div className='my-16 mx-8 flex flex-col justify-center items-center'>
             <div >
                 {!callPopup ? uniqueStateEvents.map((stateEvent, index) =>
-                    <>
+                    <div key={index}>
                         <h1 className='capitalize text-3xl mt-6 mb-3 font-semibold text-blue-900'>{stateEvent} Events</h1>
-                        <div className='grid gap-4 grid-cols-3' key={index}>
+                        <div className='grid gap-4 grid-cols-3' >
 
                             {eventsData.map((event, index) =>
                                 stateEvent === event.etat ?
@@ -35,7 +34,7 @@ const Evenement = () => {
                                     /> : ''
                             )}
                         </div>
-                    </>
+                    </div>
                 ) : <Popup />}
             </div>
 
