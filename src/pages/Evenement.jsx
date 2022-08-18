@@ -1,15 +1,27 @@
 import React from 'react'
-import CallPopup from '../components/events/CallPopup';
 import Popup from '../components/Popup';
-import { useStateContext } from "../context/contextProvider";
+import { eventsData } from "../data/eventsData";
+import { useStateContext } from '../context/contextProvider';
+import EventCard from '../components/events/EventCard';
 
 const Evenement = () => {
     const { callPopup } = useStateContext()
 
     return (
-        <div className='mt-16 flex flex-col justify-center items-center'>
-            <CallPopup />
-            {callPopup && <Popup />}
+        <div className='mt-16 mx-8 flex flex-col justify-center items-center'>
+            <div className='grid gap-4 grid-cols-3'>
+                {!callPopup ? eventsData.map((event, index) =>
+                    <EventCard
+                        date={event.date}
+                        image={event.image}
+                        lieu={event.lieu}
+                        modalites={event.modalites}
+                        objectif={event.objectif}
+                        key={index}
+                    />
+                ) : <Popup />}
+            </div>
+
         </div>
     )
 }

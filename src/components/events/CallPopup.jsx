@@ -6,7 +6,7 @@ const CallPopup = () => {
     const { setCallPopup } = useStateContext()
 
     return (
-        <div>
+        <div className='mx-2 mb-3'>
             <button
                 onClick={() => {
                     setCallPopup(true)
