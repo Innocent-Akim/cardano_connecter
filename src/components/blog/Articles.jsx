@@ -1,5 +1,5 @@
 import React from 'react'
-import { articleData, articlesCategories } from "../../data/sidebar"
+import { articleData, articlesCategories } from "../../data/sidebarBlog"
 import Button from './Button';
 import { useStateContext } from '../../context/contextProvider';
 import NoSurchData from '../NoSurchData';
