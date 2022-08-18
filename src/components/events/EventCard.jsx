@@ -1,12 +1,8 @@
 import React from 'react'
 import CallPopup from './CallPopup';
-import Popup from '../Popup';
-import { useStateContext } from "../../context/contextProvider";
 
 const EventCard = ({ date, objectif, modalites, lieu, image }) => {
-    const { callPopup } = useStateContext()
     return (
-
         <div className='shadow-md rounded-md border-1 border-blue-200'>
 
             <div className='relative'>
@@ -21,7 +17,6 @@ const EventCard = ({ date, objectif, modalites, lieu, image }) => {
                 <p>Lieu de rencontre : {lieu}</p>
             </div>
             <CallPopup />
-
         </div>
     )
 }
