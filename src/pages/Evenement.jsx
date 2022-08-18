@@ -20,7 +20,7 @@ const Evenement = () => {
                 {!callPopup ? uniqueStateEvents.map((stateEvent, index) =>
                     <div key={index}>
                         <h1 className='capitalize text-3xl mt-6 mb-3 font-semibold text-blue-900'>{stateEvent} Events</h1>
-                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4' >
+                        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4' >
 
                             {eventsData.map((event, index) =>
                                 stateEvent === event.etat ?
