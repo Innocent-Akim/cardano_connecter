@@ -3,11 +3,13 @@ import React, { createContext, useContext, useState } from "react";
 const StateContext = createContext();
 
 export const ContextProvider = ({ children }) => {
+    const ifIsSmall = window.innerWidth > 720;
+
     const [isClicked, setIsClicked] = useState(false);
     const [isFilter, setIsFilter] = useState('');
     const [isCategory, setIsCategorie] = useState('All');
     const [callPopup, setCallPopup] = useState(false);
-    const [isSmallSize, setIsSmallSize] = useState(false);
+    const [isSmallSize, setIsSmallSize] = useState(ifIsSmall);
     const [isSidebarActive, setIsSidebarActive] = useState(false);
     const [isStatus, setIsStatus] = useState(false);
 

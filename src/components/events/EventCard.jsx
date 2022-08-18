@@ -3,10 +3,10 @@ import CallPopup from './CallPopup';
 
 const EventCard = ({ date, objectif, modalites, lieu, image }) => {
     return (
-        <div className='shadow-md rounded-md border-1 border-blue-200'>
+        <div className='shadow-md rounded-md border-green-600 border-b-4'>
 
             <div className='relative'>
-                <img src={image} alt="" className='w-full h-60 contrast-75 rounded-md' />
+                <img src={image} alt="" className='w-full h-60 contrast-75' />
                 <div className='text-gray-600'>
                     <h1 className='my-3 mx-2 text-green-600 font-bold'>{objectif}</h1>
                     <p className='mx-2'>{date}</p>
