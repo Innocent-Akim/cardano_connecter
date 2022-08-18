@@ -12,7 +12,24 @@ export const eventsData = [
         modalites: "Une marche pacifique en partant de l'entree du president jusqu'a la frontiere",
         lieu: "Terminus",
         etat: "next",
+        image: event2
+    },
+    {
+        date: "24-07-2022",
+        objectif: "Exposer le desaccord sur la hausse de carburant",
+        modalites: "Une marche pacifique en partant de l'entree du president jusqu'a la frontiere",
+        lieu: "Terminus",
+        etat: "next",
         image: event1
+    },
+
+    {
+        date: "24-07-2022",
+        objectif: "Exposer le desaccord sur la hausse de carburant",
+        modalites: "Une marche pacifique en partant de l'entree du president jusqu'a la frontiere",
+        lieu: "Terminus",
+        etat: "next",
+        image: event2
     },
     {
         date: "24-07-2022",
@@ -22,6 +39,7 @@ export const eventsData = [
         etat: "next",
         image: event2
     },
+
     {
         date: "24-08-2022",
         objectif: "Exposer le desaccord sur la hausse de carburant",
@@ -38,6 +56,7 @@ export const eventsData = [
         etat: "next",
         image: event4
     },
+
     {
         date: "24-08-2022",
         objectif: "Exposer le desaccord sur la hausse de carburant",
@@ -46,6 +65,40 @@ export const eventsData = [
         etat: "recent",
         image: event5
     },
+    {
+        date: "24-07-2022",
+        objectif: "Exposer le desaccord sur la hausse de carburant",
+        modalites: "Une marche pacifique en partant de l'entree du president jusqu'a la frontiere",
+        lieu: "Terminus",
+        etat: "next",
+        image: event1
+    },
+    {
+        date: "24-07-2022",
+        objectif: "Exposer le desaccord sur la hausse de carburant",
+        modalites: "Une marche pacifique en partant de l'entree du president jusqu'a la frontiere",
+        lieu: "Terminus",
+        etat: "next",
+        image: event4
+    },
+    {
+        date: "24-08-2022",
+        objectif: "Exposer le desaccord sur la hausse de carburant",
+        modalites: "Une marche pacifique en partant de l'entree du president jusqu'a la frontiere",
+        lieu: "Terminus",
+        etat: "recent",
+        image: event6
+    },
+
+    {
+        date: "24-07-2022",
+        objectif: "Exposer le desaccord sur la hausse de carburant",
+        modalites: "Une marche pacifique en partant de l'entree du president jusqu'a la frontiere",
+        lieu: "Terminus",
+        etat: "next",
+        image: event1
+    },
+
     {
         date: "24-08-2022",
         objectif: "Exposer le desaccord sur la hausse de carburant",

@@ -6,7 +6,7 @@ const EventCard = ({ date, objectif, modalites, lieu, image }) => {
         <div className='shadow-md rounded-md border-green-600 border-b-4'>
 
             <div className='relative'>
-                <img src={image} alt="" className='w-full h-60 contrast-75' />
+                <img src={image} alt="" className='w-full h-40 contrast-75' />
                 <div className='text-gray-600'>
                     <h1 className='my-3 mx-2 text-green-600 font-bold'>{objectif}</h1>
                     <p className='mx-2'>{date}</p>
