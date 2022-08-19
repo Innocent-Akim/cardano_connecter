@@ -13,7 +13,7 @@ const EventCard = ({ date, objectif, modalites, lieu, image }) => {
                 </div>
             </div>
             <div className='px-2 mt-2 mb-3'>
-                <p className='text-base font-semibold'>{modalites}</p>
+                <p className='text-base font-normal'>{modalites}</p>
                 <p>Lieu de rencontre : {lieu}</p>
             </div>
             <CallPopup />

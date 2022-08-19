@@ -11,7 +11,7 @@ import MOBILISE from "../assets/undraw/MOBILISE.png";
 const NavBar = () => {
     const { setCallPopup, isSidebarActive, setIsSidebarActive } = useStateContext()
 
-    const classLink = 'text-black hover:decoration-white hover:text-blue-800 font-semibold'
+    const classLink = 'text-black hover:decoration-white hover:text-blue-800 font-normal'
     const classMediasSociaux = 'text-blue-900 text-lg hover:text-blue-800 hover:animate-pulse font-semibold'
 
     return (

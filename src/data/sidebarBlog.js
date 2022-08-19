@@ -65,3 +65,13 @@ export const articleData = [
         link: "https://gloire-mutaliko.netlify.app/"
     },
 ]
+
+export const tagsData = [
+    { tag: 'Blockchain' },
+    { tag: 'Cardano' },
+    { tag: 'Plutus' },
+    { tag: 'Haskell' },
+    { tag: 'Ekival' },
+    { tag: 'Mobilize' },
+    { tag: 'Stakepool' },
+]

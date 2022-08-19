@@ -1,6 +1,6 @@
 import React from 'react'
 import { BiSearchAlt2 } from "react-icons/bi"
-import { articlesCategories } from "../../data/sidebarBlog";
+import { articlesCategories, tagsData } from "../../data/sidebarBlog";
 import { useStateContext } from "../../context/contextProvider";
 
 const Sidebar = () => {
@@ -8,7 +8,7 @@ const Sidebar = () => {
 
     return (
         <div className='left-0 ml-6 my-5 text-gray-600 border-r-1 pr-4 box-border'>
-            <div className='flex justify-between items-center bg-transparent border border-gray-600 rounded-md p-2'>
+            <div className='flex items-center bg-transparent border border-gray-600 rounded-md p-2'>
                 <BiSearchAlt2 className='text-xl' />
                 <input
                     type="text"
@@ -18,8 +18,8 @@ const Sidebar = () => {
                     onChange={(e) => { handleChange(e) }}
                 />
             </div>
-            <div className='mt-4 font-semibold'>
-                <p>Catégories blogs</p>
+            <div className='mt-4 font-normal'>
+                <p className='font-semibold'>Catégories blogs</p>
                 <div className="flex flex-col justify-start text-sm">
                     {
                         articlesCategories.map((categorie, index) =>
@@ -34,6 +34,17 @@ const Sidebar = () => {
                         )
                     }
                 </div>
+            </div>
+            <h2 className='mt-8 mb-4 text-2xl font-bold'>Tags</h2>
+            <div className='grid md:grid-cols-3'>
+
+                {tagsData.map((tag, keyTag) =>
+                    <p
+                        key={keyTag}
+                        className='p-2 border-1 rounded-2xl ml-2 text-center'
+                    >
+                        {tag.tag}</p>
+                )}
             </div>
 
         </div>

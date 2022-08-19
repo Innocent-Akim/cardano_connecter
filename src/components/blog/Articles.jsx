@@ -45,8 +45,8 @@ const Articles = () => {
                             </div>
                         </div>
                         <div className='px-2 mt-2 mb-3'>
-                            <h3 className='text-base font-semibold'>{article.titre}</h3>
-                            <p>{article.description}</p>
+                            <h3 className='text-base font-medium'>{article.titre}</h3>
+                            <p className='font-light'>{article.description}</p>
                         </div>
                         <Button link={article.link} />
                     </div>
