@@ -4,7 +4,7 @@ import Card from './Card';
 
 const Activites = () => {
     return (
-        <div className='bg-gray-100 mt-16 p-16 flex flex-col items-center text-center rounded-lg'>
+        <div className='bg-gray-100 mt-16 p-20 flex flex-col items-center text-center rounded-lg'>
             <h1 className='font-bold text-2xl mb-4'>Activités organisées</h1>
             <p className='mb-9'>Les activités suivantes sont celles que nous soutenons</p>
             <div className='flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 justify-around gap-4'>
