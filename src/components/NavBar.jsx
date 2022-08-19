@@ -20,7 +20,10 @@ const NavBar = () => {
             onClick={() => setCallPopup(false)}
         >
             <div className='hidden sm:block'>
-                <img src={MOBILISE} alt='' className='w-24' />
+                <NavLink className={classLink} to='home'>
+                    <img src={MOBILISE} alt='' className='w-24' />
+                </NavLink>
+
             </div>
             <div className='block sm:hidden left-0'>
                 <button
