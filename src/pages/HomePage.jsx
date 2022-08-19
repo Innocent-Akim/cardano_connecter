@@ -2,6 +2,7 @@ import React from 'react'
 import Presentation from '../components/home/Presentation'
 import Activites from '../components/home/Activites';
 import About from '../components/home/About';
+import Leadership from '../components/home/Leadership';
 
 const HomePage = () => {
     return (
@@ -9,6 +10,7 @@ const HomePage = () => {
             <Presentation />
             <Activites />
             <About />
+            <Leadership />
         </div>
     )
 }
