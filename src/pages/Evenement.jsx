@@ -3,6 +3,7 @@ import Popup from '../components/Popup';
 import { eventsData } from "../data/eventsData";
 import { useStateContext } from '../context/contextProvider';
 import EventCard from '../components/events/EventCard';
+import LatestNews from '../components/events/LatestNews';
 
 const Evenement = () => {
     const { callPopup } = useStateContext()
@@ -15,12 +16,14 @@ const Evenement = () => {
     const uniqueStateEvents = [...new Set(stateEvents)]
 
     return (
-        <div className='my-16 mx-8 flex flex-col justify-center items-center'>
-            <div >
+        <div className='my-16 mx-8 flex justify-between'>
+            <LatestNews />
+            <div className='w-1/2'>
+
                 {!callPopup ? uniqueStateEvents.map((stateEvent, index) =>
                     <div key={index}>
                         <h1 className='capitalize text-3xl mt-6 mb-3 font-semibold text-blue-900'>{stateEvent} Events</h1>
-                        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4' >
+                        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4' >
 
                             {eventsData.map((event, index) =>
                                 stateEvent === event.etat ?
