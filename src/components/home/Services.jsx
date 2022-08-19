@@ -4,8 +4,8 @@ import Card from "./Card";
 
 const Services = () => {
     return (
-        <div className='flex justify-center p-4 items-center ml-5'>
-            <div className='grid grid-cols-2 gap-3 rounded-none'>
+        <div className='flex justify-center lg:p-4 items-center lg:ml-5'>
+            <div className='grid sm:grid-cols-2 gap-3 rounded-none'>
                 {
                     cardServicesData.map((card, index) =>
                         <Card
