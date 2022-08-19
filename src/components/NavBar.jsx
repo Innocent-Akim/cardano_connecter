@@ -6,6 +6,7 @@ import { MdOutlineMenuOpen } from "react-icons/md";
 
 import { useStateContext } from "../context/contextProvider";
 import Sidebar from './Sidebar.jsx';
+import MOBILISE from "../assets/undraw/MOBILISE.png";
 
 const NavBar = () => {
     const { setCallPopup, isSidebarActive, setIsSidebarActive } = useStateContext()
@@ -18,7 +19,10 @@ const NavBar = () => {
             className='flex justify-between items-center fixed top-0 right-0 left-0 z-50 bg-gray-50 w-full h-14 mb-10 px-7 shadow-lg'
             onClick={() => setCallPopup(false)}
         >
-            <div className='block sm:hidden'>
+            <div className='hidden sm:block'>
+                <img src={MOBILISE} alt='' className='w-24' />
+            </div>
+            <div className='block sm:hidden left-0'>
                 <button
                     className='text-2xl text-blue-900 font-bold'
                     onClick={() => setIsSidebarActive(!isSidebarActive)}
@@ -27,9 +31,7 @@ const NavBar = () => {
                 </button>
             </div>
             <Sidebar />
-            <div>
-                <img src='' alt='' />
-            </div>
+
             <div>
                 <ul className='hidden sm:flex sm:justify-between'>
                     <li className='mx-6'>
