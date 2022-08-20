@@ -17,32 +17,37 @@ const Evenement = () => {
 
     return (
         <div className='my-16 mx-8 flex justify-between'>
-            <LatestNews />
-            <div className='w-1/2 right-0 absolute'>
 
-                {!callPopup ? uniqueStateEvents.map((stateEvent, index) =>
-                    <div key={index}>
-                        <h1 className='capitalize text-3xl mt-6 mb-3 font-semibold text-blue-900'>{stateEvent} Events</h1>
-                        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4' >
+            <div className='w-1/2 right-0 mr-6 absolute'>
 
-                            {eventsData.map((event, index) =>
-                                stateEvent === event.etat ?
-                                    <EventCard
-                                        date={event.date}
-                                        image={event.image}
-                                        lieu={event.lieu}
-                                        modalites={event.modalites}
-                                        objectif={event.objectif}
-                                        ador={event.adore}
-                                        cheer={event.cheer}
-                                        like={event.likes}
-                                        key={index}
+                {!callPopup ?
+                    <div>
+                        <LatestNews />
+                        {uniqueStateEvents.map((stateEvent, index) =>
+                            <div key={index}>
+                                <h1 className='capitalize text-3xl mt-6 mb-3 font-semibold text-blue-900'>{stateEvent} Events</h1>
+                                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4' >
 
-                                    /> : ''
-                            )}
-                        </div>
+                                    {eventsData.map((event, index) =>
+                                        stateEvent === event.etat ?
+                                            <EventCard
+                                                date={event.date}
+                                                image={event.image}
+                                                lieu={event.lieu}
+                                                modalites={event.modalites}
+                                                objectif={event.objectif}
+                                                ador={event.adore}
+                                                cheer={event.cheer}
+                                                like={event.likes}
+                                                key={index}
+
+                                            /> : ''
+                                    )}
+                                </div>
+                            </div>
+                        )}
                     </div>
-                ) : <Popup />}
+                    : <Popup />}
             </div>
 
         </div>
