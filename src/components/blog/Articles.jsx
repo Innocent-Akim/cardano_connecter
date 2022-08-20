@@ -30,7 +30,7 @@ const Articles = () => {
 
     return (
         <>
-            {data.length > 0 ? <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 content-center mx-5 my-4 '>
+            {data.length > 0 ? <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 content-center mx-5 my-4 absolute left-0 w-8/12'>
                 {data.map((article, index) =>
                     <div className='shadow-md rounded-md border-b-1 border-blue-400' key={index}>
                         <div className='relative'>
@@ -45,7 +45,7 @@ const Articles = () => {
                             </div>
                         </div>
                         <div className='px-2 mt-2 mb-3'>
-                            <h3 className='text-base font-medium'>{article.titre}</h3>
+                            <h3 className='text-base text-sky-700 font-medium'>{article.titre}</h3>
                             <p className='font-light'>{article.description}</p>
                         </div>
                         <Button link={article.link} />
@@ -54,7 +54,7 @@ const Articles = () => {
 
                 }
             </div> :
-                <div className='flex justify-center content-center items-center w-screen'>
+                <div className='flex justify-center content-center items-center absolute left-0 w-8/12'>
                     <NoSurchData />
                 </div>}
         </>
