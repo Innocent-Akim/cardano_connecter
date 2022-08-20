@@ -18,7 +18,7 @@ const Evenement = () => {
     return (
         <div className='my-16 mx-8 flex justify-between'>
             <LatestNews />
-            <div className='w-1/2'>
+            <div className='w-1/2 right-0 absolute'>
 
                 {!callPopup ? uniqueStateEvents.map((stateEvent, index) =>
                     <div key={index}>
