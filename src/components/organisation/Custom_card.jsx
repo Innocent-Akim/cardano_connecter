@@ -12,7 +12,7 @@ const Custom_card = ({ name, image }) => {
     <div className='bg-fixed mt-2 h-75 w-200 bg-gray-50 shadow-lg p-4'>
       <p className='text-18 font-bold p-2'><span className='text-18 text-blue-900 font-extrabold'>{name}</span></p>
       <div className=''></div>
-      <div className='flex m-2 p-2 bg-white'>
+      <div className='flex flex-wrap justify-center m-2 p-2 bg-white'>
         <p className='text-justify text-14 font-light'>
           Lorem ipsum dolor. Aspernatur quo dolorem porro, nostrum libero dignissimos minima explicabo ipsam illo beatae in magnam adipisci error ad quas iste fugit et saepe?
         </p>
