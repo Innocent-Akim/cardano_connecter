@@ -7,6 +7,9 @@ module.exports = {
             body: ['Open Sans', 'Roboto'],
         },
         extend: {
+            animation: {
+                'spin-slow': 'spin 1s linear 1',
+            },
             fontSize: {
                 14: '14px',
                 18: '18px',

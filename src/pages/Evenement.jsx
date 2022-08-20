@@ -33,7 +33,11 @@ const Evenement = () => {
                                         lieu={event.lieu}
                                         modalites={event.modalites}
                                         objectif={event.objectif}
+                                        ador={event.adore}
+                                        cheer={event.cheer}
+                                        like={event.likes}
                                         key={index}
+
                                     /> : ''
                             )}
                         </div>

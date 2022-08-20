@@ -4,7 +4,9 @@ import { FaHandsWash } from "react-icons/fa";
 
 import CallPopup from './CallPopup';
 
-const EventCard = ({ date, objectif, modalites, lieu, image }) => {
+const EventCard = ({ date, objectif, modalites, lieu, image, like = 0, cheer = 0, ador = 0 }) => {
+    const classImpressions = 'text-xl mr-2 mb-5 hover:cursor-pointer hover:animate-spin-slow'
+
     return (
         <div className='shadow-md rounded-md border-sky-500 border-b-4'>
 
@@ -16,15 +18,24 @@ const EventCard = ({ date, objectif, modalites, lieu, image }) => {
                 </div>
             </div>
             <div className='px-2 mt-2 mb-3'>
-                <p className='text-base font-normal'>{modalites}</p>
+                <p className='text-base font-extralight'>{modalites}</p>
                 <p>Lieu de rencontre : {lieu}</p>
             </div>
             <div className='flex justify-between items-center'>
                 <CallPopup />
                 <div className='flex justify-between pr-4 text-lg text-sky-900'>
-                    <AiTwotoneLike className='mr-3' />
-                    <AiFillHeart className='mr-3' />
-                    <FaHandsWash className='mr-3' />
+                    <span className='relative bg-sky-700 font-light text-sm flex items-center justify-center w-4 h-4 rounded-full text-center bottom-3 left-6 text-white'>{like}</span>
+
+
+                    <div className='flex items-center relative'>
+                        <AiTwotoneLike className={classImpressions} />
+                    </div>
+                    <span className='relative bg-sky-700 font-light text-sm flex items-center justify-center w-4 h-4 rounded-full text-center bottom-3 left-6 text-white'>{ador}</span>
+
+                    <div><AiFillHeart className={`${classImpressions} text-red-700`} /></div>
+                    <span className='relative bg-sky-700 font-light text-sm flex items-center justify-center w-4 h-4 rounded-full text-center bottom-3 left-6 text-white'>{cheer}</span>
+
+                    <div><FaHandsWash className={`${classImpressions} text-yellow-700 `} /></div>
                 </div>
             </div>
 
