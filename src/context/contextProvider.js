@@ -6,6 +6,7 @@ export const ContextProvider = ({ children }) => {
     const ifIsSmall = window.innerWidth > 720;
 
     const [isClicked, setIsClicked] = useState(false);
+    const [isActivePage, setIsActivePage] = useState('Home');
     const [isFilter, setIsFilter] = useState('');
     const [isCategory, setIsCategorie] = useState('All');
     const [callPopup, setCallPopup] = useState(false);
@@ -15,6 +16,10 @@ export const ContextProvider = ({ children }) => {
 
     const handleChangeCategorie = (value) => {
         setIsCategorie(value)
+    }
+
+    const handleChangePage = (menu) => {
+        setIsActivePage(menu)
     }
 
     const handleChange = (e) => {
@@ -35,6 +40,7 @@ export const ContextProvider = ({ children }) => {
                 handleChange,
                 isCategory,
                 handleChangeCategorie,
+                isActivePage, handleChangePage,
                 callPopup, setCallPopup,
                 isSmallSize, setIsSmallSize,
                 isSidebarActive, setIsSidebarActive,
