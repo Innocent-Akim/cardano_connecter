@@ -16,7 +16,7 @@ const NavBar = () => {
 
     return (
         <nav
-            className='flex justify-between items-center fixed top-0 right-0 left-0 z-50 bg-gray-50 w-full h-14 mb-10 px-7 shadow-lg textsk'
+            className='flex justify-between items-center fixed top-0 right-0 left-0 z-50 bg-gray-50 w-full h-14 mb-10 px-7 shadow-lg'
             onClick={() => setCallPopup(false)}
         >
             <div className='hidden sm:block'>
