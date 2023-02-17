@@ -11,7 +11,7 @@ const Presentation = () => {
             <div>
                 <h1 className='text-sky-600 font-semibold text-3xl mb-3'># Shiriki-DRC</h1>
                 <p className='font-bold text-5xl mb-5'>Soutenez les actions citoyens</p>
-                <p className='text-lg font-medium'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam dolorem fuga accusamus.</p>
+                <p className='text-lg font-medium'>Les organisations et entreprises informent et recrutent des citoyens ou de partisans pour soutenir une cause ou un événement par des actions ou de contributions.</p>
                 <div className='flex gap-3'>
                     <Button
                         icon={<FaServicestack className='mr-3 text-lg text-emerald-100' />}
