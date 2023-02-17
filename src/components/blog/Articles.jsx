@@ -30,7 +30,7 @@ const Articles = () => {
 
     return (
         <>
-            {data.length > 0 ? <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 content-center mx-5 my-4 absolute left-0 w-8/12'>
+            {data.length > 0 ? <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 content-center mx-5 my-4 absolute left-0 w-full md:w-8/12'>
                 {data.map((article, index) =>
                     <div className='shadow-md rounded-md border-b-1 border-blue-400' key={index}>
                         <div className='relative'>

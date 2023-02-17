@@ -7,14 +7,9 @@ import homeDraw from "../../assets/undraw/homeDraw.png";
 const Presentation = () => {
     return (
         <div className='flex flex-col md:grid md:grid-cols-2 justify-around items-center lg:mx-20'
-        // style={{
-        //     backgroundImage: 'radial-gradient(#a19fff 20%, transparent 20%),radial-gradient(#a19fff 20%, transparent 20%)',
-        //     backgroundPosition: '0 0, 50px 50px',
-        //     backgroundSize: '10px 10px'
-        // }}
         >
             <div>
-                <h1 className='text-sky-600 font-semibold text-3xl mb-3'># Stakepool Goma</h1>
+                <h1 className='text-sky-600 font-semibold text-3xl mb-3'># Shiriki-DRC</h1>
                 <p className='font-bold text-5xl mb-5'>Lorem ipsum dolor sit  adipisicing.</p>
                 <p className='text-lg font-medium'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam dolorem fuga accusamus.</p>
                 <div className='flex gap-3'>
@@ -32,9 +27,9 @@ const Presentation = () => {
                     />
                 </div>
             </div>
-            <div className='flex items-center'>
+            <div className='flex items-center w-80 md:w-full'>
                 <div>
-                    <img src={homeDraw} alt="" className='lg:w-800' />
+                    <img src={homeDraw} alt="" className='w-80 lg:w-800' />
                 </div>
                 <div className='h-28 w-20'
                     style={{

@@ -7,7 +7,7 @@ import Sidebar from '../components/blog/Sidebar'
 const Blog = () => {
 
     return (
-        <div className='mt-16 flex justify-center'>
+        <div className='mt-16 flex justify-center h-full '>
             <Articles />
             <Sidebar />
         </div>

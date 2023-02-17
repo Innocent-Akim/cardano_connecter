@@ -4,7 +4,7 @@ import CardLeader from './CardLeader';
 
 const Leadership = () => {
     return (
-        <div className='bg-gray-100 mt-16 p-20 flex flex-col items-center text-center rounded-lg'>
+        <div className='bg-slate-100 mt-16 p-20 w-full flex flex-col items-center text-center rounded-lg'>
             <h1 className='font-bold text-2xl mb-4'>Leadership</h1>
             <p className='mb-9'>Rencontrez notre équipe et bénéficiez de son expertise</p>
             <div className='flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 justify-around gap-4'>

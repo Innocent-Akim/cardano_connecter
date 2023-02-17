@@ -12,15 +12,15 @@ const App = () => {
     return (
         <BrowserRouter>
             <NavBar />
-
-            <Routes>
-                <Route path='/' element={<HomePage />} />
-                <Route path='/home' element={<HomePage />} />
-                <Route path='/organisation' element={<Organisation />} />
-                <Route path='/evenement' element={<Evenement />} />
-                <Route path='/blog' element={<Blog />} />
-            </Routes>
-
+            <div className=' mx-6 md:mx-32 bg-slate-50'>
+                <Routes >
+                    <Route path='/' element={<HomePage />} />
+                    <Route path='/home' element={<HomePage />} />
+                    <Route path='/organisation' element={<Organisation />} />
+                    <Route path='/evenement' element={<Evenement />} />
+                    <Route path='/blog' element={<Blog />} />
+                </Routes>
+            </div>
         </BrowserRouter>
     )
 

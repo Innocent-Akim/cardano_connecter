@@ -6,7 +6,7 @@ import Leadership from '../components/home/Leadership';
 
 const HomePage = () => {
     return (
-        <div className='my-16 mx-20'>
+        <div className='my-16 mx-0 md:mx-20'>
             <Presentation />
             <Activites />
             <About />

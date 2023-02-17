@@ -9,23 +9,24 @@ import { AiFillLinkedin } from 'react-icons/ai'
 
 const Custom_card = ({ name, image }) => {
   return (
-    <div className='bg-fixed mt-2 h-75 w-200 bg-gray-50 shadow-lg p-4'>
+    <div className='bg-fixed mt-2 h-75 w-80 md:w-full bg-white shadow p-4 rounded-sm'>
       <p className='text-18 font-bold p-2'><span className='text-18 text-blue-900 font-extrabold'>{name}</span></p>
       <div className=''></div>
       <div className='flex flex-wrap justify-center m-2 p-2 bg-white'>
-        <p className='text-justify text-14 font-light'>
+        <img className=' pl-2 h-40 bg-cover w-full' src={image}></img>
+        <span className='text-slate-700 p-4'>
           Lorem ipsum dolor. Aspernatur quo dolorem porro, nostrum libero dignissimos minima explicabo ipsam illo beatae in magnam adipisci error ad quas iste fugit et saepe?
-        </p>
-        <img className='w-52 h-44 pl-2  cursor-pointer' src={image}></img>
+        </span>
+
       </div>
 
-      <div className='bottom-0  h-10 w-200 bg-gray-50 '>
+      <div className='bottom-0  h-10 w-200 bg-white '>
         <h1 className='text-14 font-bold p-1'>Contact nous</h1>
-        <div className='flex gap-4 items-center'>
-          <BsFacebook className='w-3 h-3 bg-blue-600 text-white rounded-full' />
-          <SiGoogle className='w-3 h-3 bg-red-500 text-white rounded-full' />
-          <TbBrandTelegram className='w-3 h-3 bg-blue-600 text-white rounded-full' />
-          <AiFillLinkedin className='w-3 h-3 bg-blue-600 text-white rounded-full' />
+        <div className='flex gap-2 items-center mb-2 bg-white'>
+          <BsFacebook className='w-6 h-6 bg-blue-600 text-white rounded-full cursor-pointer p-1' />
+          <SiGoogle className='w-6 h-6 bg-red-500 text-white rounded-full cursor-pointer p-1' />
+          <TbBrandTelegram className='w-6 h-6 bg-blue-600 text-white rounded-full cursor-pointer p-1' />
+          <AiFillLinkedin className='w-6 h-6 bg-blue-600 text-white rounded-full cursor-pointer p-1' />
         </div>
       </div>
     </div>

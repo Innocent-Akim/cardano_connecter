@@ -16,12 +16,12 @@ const Evenement = () => {
     const uniqueStateEvents = [...new Set(stateEvents)]
 
     return (
-        <div className='my-16 mx-8 grid grid-cols-1 sm:flex sm:justify-between'>
+        <div className='my-16 md:mx-8 grid grid-cols-1 sm:flex sm:justify-between'>
             {!callPopup &&
                 <LatestNews />
             }
 
-            <div className='w-full sm:w-1/2 right-0 sm:absolute'>
+            <div className='w-full  sm:w-1/2 right-0 sm:absolute'>
 
                 {!callPopup ?
 

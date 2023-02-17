@@ -1,4 +1,4 @@
-import lucha from '../assets/events/lucha-site.jpg'
+import lucha from '../assets/events/lucha.jpeg'
 import airtel from '../assets/events/Airtel.png'
 import ista from '../assets/events/ista.JPG'
 import orange from '../assets/events/orange.png'

@@ -3,9 +3,9 @@ import { BiCodeAlt } from "react-icons/bi";
 import { IoSchool } from "react-icons/io5";
 import { RiComputerFill } from "react-icons/ri";
 import { MdAddAlert, MdRadio, MdOutlineEscalatorWarning } from "react-icons/md";
-import moise from "../assets/leadership/moise.jpg";
-import gloire from "../assets/leadership/gloire.jpeg";
-import clapton from "../assets/leadership/clapton.jpg";
+import paul from "../assets/images/paul.jpeg";
+import frederic from "../assets/images/frederic.jpg";
+import clapton from "../assets/images/boaz.jpg";
 import akim from "../assets/leadership/akim.jpeg";
 
 export const cardData = [
@@ -24,31 +24,31 @@ export const cardServicesData = [
 
 export const leaderData = [
     {
-        nom: 'Gloire Mutaliko',
-        fonction: 'CTO',
-        linkedin: 'https://linkedin.com/in/gloire-mutaliko-2b6733211',
-        twitter: 'https://twitter.com/GloireMutaliko',
-        profileImg: gloire
+        nom: 'FREDERIC SAMVURA Genty',
+        fonction: 'Smart Contract Developer',
+        linkedin: 'https://www.linkedin.com/in/fr%C3%A9d%C3%A9ric-samvura/',
+        twitter: 'https://twitter.com/genty_samvura',
+        profileImg: frederic
     },
     {
-        nom: 'Akim Cizungu',
-        fonction: 'CEO',
-        linkedin: 'https://linkedin.com/in/gloire-mutaliko-2b6733211',
-        twitter: 'https://twitter.com/GloireMutaliko',
+        nom: 'AKILIMALI CIZUNGU Innocent',
+        fonction: 'software developer',
+        linkedin: 'https://www.linkedin.com/in/akili-innocent/',
+        twitter: 'https://twitter.com/akilimali_akim',
         profileImg: akim
     },
     {
-        nom: 'Erick Clapton',
-        fonction: 'COO',
-        linkedin: 'https://linkedin.com/in/gloire-mutaliko-2b6733211',
-        twitter: 'https://twitter.com/GloireMutaliko',
+        nom: 'BANDU BALUME Boaz',
+        fonction: 'MARKETING',
+        linkedin: 'https://www.instagram.com/balumeboaz/?hl=en',
+        twitter: 'https://twitter.com/B3Boaz',
         profileImg: clapton
     },
     {
-        nom: 'Moise Nturubika',
-        fonction: 'Administrateur',
-        linkedin: 'https://linkedin.com/in/gloire-mutaliko-2b6733211',
-        twitter: 'https://twitter.com/GloireMutaliko',
-        profileImg: moise
+        nom: 'MUPENDA BYALAHIRE Paul',
+        fonction: "software developer",
+        linkedin: 'https://www.linkedin.com/in/paul-mupenda/',
+        twitter: 'https://twitter.com/paul_mupenda',
+        profileImg: paul
     },
 ]
