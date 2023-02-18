@@ -13,7 +13,7 @@ const Presentation = () => {
         <div className='flex flex-col md:grid md:grid-cols-2 justify-around items-center lg:mx-20'
         >
             <div>
-                <h1 className='text-sky-600 font-semibold text-3xl mb-3'># Shiriki-DRC</h1>
+                <h1 className='text-sky-600 font-semibold text-3xl mb-3'># Shiriki-RDC</h1>
                 <p className='font-bold text-5xl mb-5'>Soutenez les actions citoyens</p>
                 <p className='text-lg font-medium'>Les organisations et entreprises informent et recrutent des citoyens ou de partisans pour soutenir une cause ou un événement par des actions ou de
                     <NavLink to='/evenement' onClick={() => { handleChangePage("Evénément") }}> contributions</NavLink>.

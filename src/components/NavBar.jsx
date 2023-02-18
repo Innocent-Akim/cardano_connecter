@@ -36,7 +36,7 @@ const NavBar = () => {
             <Sidebar />
 
             <div>
-                <ul className='hidden sm:flex sm:justify-between'>
+                <ul className='hidden sm:flex sm:justify-between 2xl:text-20'>
                     <li className='mx-6'>
                         <NavLink
                             className={classLink}
