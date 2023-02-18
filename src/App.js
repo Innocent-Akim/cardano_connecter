@@ -12,7 +12,7 @@ const App = () => {
     return (
         <BrowserRouter>
             <NavBar />
-            <div className=' mx-6 md:mx-32 bg-slate-50'>
+            <div className=' mx-6 2xl:mx-32 bg-slate-50'>
                 <Routes >
                     <Route path='/' element={<HomePage />} />
                     <Route path='/home' element={<HomePage />} />

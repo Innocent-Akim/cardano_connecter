@@ -1,17 +1,23 @@
 import React from 'react'
+
 import Button from './Button'
 import { FaServicestack } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import homeDraw from "../../assets/undraw/homeDraw.png";
+import { NavLink } from 'react-router-dom';
+import { useStateContext } from '../../context/contextProvider';
 
 const Presentation = () => {
+    const { handleChangePage } = useStateContext();
     return (
         <div className='flex flex-col md:grid md:grid-cols-2 justify-around items-center lg:mx-20'
         >
             <div>
                 <h1 className='text-sky-600 font-semibold text-3xl mb-3'># Shiriki-DRC</h1>
-                <p className='font-bold text-5xl mb-5'>Lorem ipsum dolor sit  adipisicing.</p>
-                <p className='text-lg font-medium'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam dolorem fuga accusamus.</p>
+                <p className='font-bold text-5xl mb-5'>Soutenez les actions citoyens</p>
+                <p className='text-lg font-medium'>Les organisations et entreprises informent et recrutent des citoyens ou de partisans pour soutenir une cause ou un événement par des actions ou de
+                    <NavLink to='/evenement' onClick={() => { handleChangePage("Evénément") }}> contributions</NavLink>.
+                </p>
                 <div className='flex gap-3'>
                     <Button
                         icon={<FaServicestack className='mr-3 text-lg text-emerald-100' />}
