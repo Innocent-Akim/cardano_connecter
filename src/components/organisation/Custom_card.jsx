@@ -9,24 +9,25 @@ import { AiFillLinkedin } from 'react-icons/ai'
 
 const Custom_card = ({ name, image }) => {
   return (
-    <div className='bg-fixed mt-2 h-75 w-80 md:w-full bg-white shadow p-4 rounded-sm'>
-      <p className='text-18 font-bold p-2'><span className='text-18 text-blue-900 font-extrabold'>{name}</span></p>
+    <div className='bg-fixed mt-2 h-75 w-80 md:w-full bg-white shadow rounded-sm'>
       <div className=''></div>
-      <div className='flex flex-wrap justify-center m-2 p-2 bg-white'>
-        <img className=' pl-2 h-40 bg-cover w-full' src={image}></img>
-        <span className='text-slate-700 p-4'>
-          Lorem ipsum dolor. Aspernatur quo dolorem porro, nostrum libero dignissimos minima explicabo ipsam illo beatae in magnam adipisci error ad quas iste fugit et saepe?
+      <div className='flex flex-wrap justify-center bg-white'>
+        <img className='h-40 object-cover w-full border-b-2 border-sky-600 blur-0' src={image} />
+      </div>
+      <div className='text-slate-700 m-5'>
+        <p className='text-18 font-bold'><span className='text-18 font-extrabold text-sky-700'>{name}</span></p>
+        <span className='text-slate-700 font-light'>
+          Lorem ipsum dolor. Aspernatur quo
         </span>
-
       </div>
 
-      <div className='bottom-0  h-10 w-200 bg-white '>
-        <h1 className='text-14 font-bold p-1'>Contact nous</h1>
-        <div className='flex gap-2 items-center mb-2 bg-white'>
-          <BsFacebook className='w-6 h-6 bg-blue-600 text-white rounded-full cursor-pointer p-1' />
-          <SiGoogle className='w-6 h-6 bg-red-500 text-white rounded-full cursor-pointer p-1' />
-          <TbBrandTelegram className='w-6 h-6 bg-blue-600 text-white rounded-full cursor-pointer p-1' />
-          <AiFillLinkedin className='w-6 h-6 bg-blue-600 text-white rounded-full cursor-pointer p-1' />
+      <div className='m-5'>
+        <h1 className='text-14 font-medium'>Contactez-nous</h1>
+        <div className='flex gap-2 items-center mt-2 pb-5'>
+          <BsFacebook className='w-6 h-6 rounded-full cursor-pointer p-1 text-sky-700 border border-sky-700' />
+          <SiGoogle className='w-6 h-6 rounded-full cursor-pointer p-1 text-white bg-amber-500' />
+          <TbBrandTelegram className='w-6 h-6 rounded-full cursor-pointer p-1 text-blue-700 border border-blue-700' />
+          <AiFillLinkedin className='w-6 h-6 cursor-pointer rounded-lg p-1 text-cyan-700 border border-cyan-700' />
         </div>
       </div>
     </div>
